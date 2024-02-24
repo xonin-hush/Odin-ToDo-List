@@ -1,4 +1,4 @@
-let projects = []//done
+window.projects = []//done
 let i=0
 //creates project that we're going to put todo s in it
 class ToDo {
@@ -21,12 +21,11 @@ export function testing() {
 function createProject(Todo) {
     const project = []
     project[0]=i
-    // project.push(Todo)
+    project.push(Todo)
     projects.push(project)
-    console.log(projects)
     i++
 }
-let test = new ToDo("title", "description3", "dueTime1", "priority2")//done
+let test = new ToDo("Xonin", "description3", "dueTime1", "priority2")//done
 
 createProject(test)//value=0
 createProject(test)//value=1

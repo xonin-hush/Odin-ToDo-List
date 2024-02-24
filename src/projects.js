@@ -6,26 +6,30 @@ export function DisplayProjects() {
             if (typeof j != "number") {
                 console.log(j)
                 const project = document.createElement("div")
+                project.classList.add("card")
+                projectsDiv.classList.add("cards")
                 // project.textContent = j.title
-                projectCard(j,projectsDiv)
+                projectCard(j,project)
+                projectsDiv.appendChild(project)
                 index.appendChild(projectsDiv)
+
             }
         }
     }
 }
-function projectCard(project,projectsDiv){
-const projectTitle=document.createElement("div")
-projectTitle.textContent=project.title
-const projectDescription=document.createElement("div")
-projectDescription.textContent=project.description
-const projectDueTime=document.createElement("div")
-projectDueTime.textContent=project.dueTime
-const projectPriority=document.createElement("div")
-projectPriority.textContent=project.priority
-projectsDiv.appendChild(projectTitle)
-projectsDiv.appendChild(projectDescription)
-projectsDiv.appendChild(projectDueTime)
-projectsDiv.appendChild(projectPriority)
+function projectCard(project, projectCard) {
+    const projectTitle = document.createElement("div")
+    projectTitle.textContent = project.title
+    const projectDescription = document.createElement("div")
+    projectDescription.textContent = project.description
+    const projectDueTime = document.createElement("div")
+    projectDueTime.textContent = project.dueTime
+    const projectPriority = document.createElement("div")
+    projectPriority.textContent = project.priority
+    projectCard.appendChild(projectTitle)
+    projectCard.appendChild(projectDescription)
+    projectCard.appendChild(projectDueTime)
+    projectCard.appendChild(projectPriority)
 }
 DisplayProjects()
 // function doStuff() {
