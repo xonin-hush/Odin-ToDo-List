@@ -31,5 +31,3 @@ createProject(test)//value=0
 createProject(test)//value=1
 createProject(test)//value=2
 createProject(test)//value=3
-// projects[i].push(test)
-//click>>j=e.target>>push-Todo to projects[j]

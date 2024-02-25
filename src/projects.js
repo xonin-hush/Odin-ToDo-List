@@ -1,35 +1,39 @@
+//takes info from "projects" and loops though it
 export function DisplayProjects() {
     const index = document.querySelector(".index")
     const projectsDiv = document.createElement("div")
-    for (let i of projects) {
-        for (let j of i) {
-            if (typeof j != "number") {
-                console.log(j)
+    let counter = 0
+    for (let projectIndex of projects) {
+        for (let projectProperty of projectIndex) {
+            if (typeof projectProperty != "number") {
+                console.log(projectProperty)
                 const project = document.createElement("div")
                 project.classList.add("card")
                 projectsDiv.classList.add("cards")
-                // project.textContent = j.title
-                projectCard(j,project)
+                project.innerHTML = `<input type="checkbox" id="project" name="project" value="project${counter}">`
+                projectCard(projectProperty, project)
                 projectsDiv.appendChild(project)
                 index.appendChild(projectsDiv)
 
             }
+            counter++
         }
     }
 }
-function projectCard(project, projectCard) {
+//handles projects on the DOM
+function projectCard(projectProperty, project) {
     const projectTitle = document.createElement("div")
-    projectTitle.textContent = project.title
+    projectTitle.textContent = projectProperty.title
     const projectDescription = document.createElement("div")
-    projectDescription.textContent = project.description
+    projectDescription.textContent = projectProperty.description
     const projectDueTime = document.createElement("div")
-    projectDueTime.textContent = project.dueTime
+    projectDueTime.textContent = projectProperty.dueTime
     const projectPriority = document.createElement("div")
-    projectPriority.textContent = project.priority
-    projectCard.appendChild(projectTitle)
-    projectCard.appendChild(projectDescription)
-    projectCard.appendChild(projectDueTime)
-    projectCard.appendChild(projectPriority)
+    projectPriority.textContent = projectProperty.priority
+    project.appendChild(projectTitle)
+    project.appendChild(projectDescription)
+    project.appendChild(projectDueTime)
+    project.appendChild(projectPriority)
 }
 DisplayProjects()
 // function doStuff() {

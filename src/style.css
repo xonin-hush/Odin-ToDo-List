@@ -44,9 +44,11 @@ html {
     gap: 20px;
 
 }
-.title{
+
+.title {
     font-weight: bolder;
 }
+
 .button {
     align-self: end;
     background-color: #7c3aed;
@@ -115,11 +117,12 @@ svg {
 
 .index {
     background-color: #e2e8f0;
-    display: grid;
-    grid-template-columns: 3fr 1fr;
+    display: flex;
+    justify-content: center;
     gap: 20px;
     padding-left: 20px;
-    padding-right: 30px;
+    padding-right: 20px;
+    padding-top: 30px;
     padding-bottom: 20vh;
 
 }
@@ -141,6 +144,7 @@ svg {
     background-color: #ffffff;
     border-radius: 12px;
     max-width: 450px;
+    min-width: 40vw;
     border-left: 10px solid #7c3aed;
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 }
@@ -206,13 +210,16 @@ svg {
     font-weight: bolder;
     font-size: larger;
 }
-.side-tag{
+
+.side-tag {
     font-size: medium;
     font-weight: bolder;
 }
-p{
+
+p {
     font-size: large;
 }
+
 .profile p {
     margin: 0px;
     margin-top: 5px;
@@ -220,7 +227,8 @@ p{
     margin-left: 15px;
 }
 
-span , .logo {
+span,
+.logo {
     font-size: 1.4em;
     height: 60px;
     display: flex;
@@ -228,20 +236,24 @@ span , .logo {
     font-weight: bolder;
     gap: 10px;
 }
-.logo{
+
+.logo {
     margin-left: 1em;
     font-size: 2em;
     margin-top: 0.5em;
 }
+
 span svg {
     display: block;
     height: 1em;
-    
+
 }
-#support{
+
+#support {
     margin-top: 3em;
 }
-.side-cards .profile{
+
+.side-cards .profile {
     margin-bottom: 15px;
 
 }
