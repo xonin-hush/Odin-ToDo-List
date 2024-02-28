@@ -1,5 +1,6 @@
 const dialog = document.querySelector("dialog")
 const addProject=document.querySelector("#add-project")
+const submit = dialog.querySelector("#submit")
 addProject.addEventListener("click", () => {
     dialog.showModal()
   });
@@ -45,23 +46,22 @@ export function projectsWindow() {
 }
 projectsWindow()
 
-// function addBookToLibrary() {
-//     submit.addEventListener("click", (event) => {
-//       event.preventDefault(); // We don't want to submit this fake form
-//       var title = document.querySelector("#book-name")
-//       var temp = title.value
-//       var author = document.querySelector("#author-name")
-//       var pages = document.querySelector("#pages-number")
-//       var readStatus = document.querySelector("#read-status")
-//       if (title.value && author.value && pages.value !== "") {
-//         temp = new Book(title.value, author.value, pages.value, "on")
-//         myLibrary.push(temp)
-//         dialog.close(dialog.value); // Have to send the select box value here.
-//         showBooks()
-//       }
-//     });
-//   }
-
+function getProjectInfo() {
+    submit.addEventListener("click", (event) => {
+      event.preventDefault(); // We don't want to submit this fake form
+      var projectTitle = document.querySelector("#title-input")
+    //   var temp = title.value
+      var  projectDescription= document.querySelector("#description-input")
+      var projectDeadLine = document.querySelector("#date-input")
+      console.log(projectTitle.value,projectDescription.value,projectDeadLine.value)
+      if (projectTitle.value && projectDescription.value && projectDeadLine.value !== "") {
+        // temp = new Book(title.value, author.value, pages.value, "on")
+        // myLibrary.push(temp)
+        dialog.close(dialog.value); // Have to send the select box value here.
+      }
+    });
+  }
+getProjectInfo()
 // function doStuff() {
 // console.log(projects);
 //  }
