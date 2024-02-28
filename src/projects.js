@@ -1,6 +1,29 @@
+const dialog = document.querySelector("dialog")
+const addProject=document.querySelector("#add-project")
+addProject.addEventListener("click", () => {
+    dialog.showModal()
+  });
 //takes info from "projects" and loops though it
-export function DisplayProjects() {
+//handles projects on the DOM
+function projectCard(projectProperty, project) {
+    const projectTitle = document.createElement("div")
+    projectTitle.textContent = projectProperty.title
+    const projectDescription = document.createElement("div")
+    projectDescription.textContent = projectProperty.description
+    const projectDueTime = document.createElement("div")
+    projectDueTime.textContent = projectProperty.dueTime
+    const projectPriority = document.createElement("div")
+    projectPriority.textContent = projectProperty.priority
+    project.appendChild(projectTitle)
+    project.appendChild(projectDescription)
+    project.appendChild(projectDueTime)
+    project.appendChild(projectPriority)
+}
+export function projectsWindow() {
     const index = document.querySelector(".index")
+    const myProjects = document.createElement("h1")
+    myProjects.textContent = "My Projects"
+    index.appendChild(myProjects)
     const projectsDiv = document.createElement("div")
     let counter = 0
     for (let projectIndex of projects) {
@@ -20,22 +43,25 @@ export function DisplayProjects() {
         }
     }
 }
-//handles projects on the DOM
-function projectCard(projectProperty, project) {
-    const projectTitle = document.createElement("div")
-    projectTitle.textContent = projectProperty.title
-    const projectDescription = document.createElement("div")
-    projectDescription.textContent = projectProperty.description
-    const projectDueTime = document.createElement("div")
-    projectDueTime.textContent = projectProperty.dueTime
-    const projectPriority = document.createElement("div")
-    projectPriority.textContent = projectProperty.priority
-    project.appendChild(projectTitle)
-    project.appendChild(projectDescription)
-    project.appendChild(projectDueTime)
-    project.appendChild(projectPriority)
-}
-DisplayProjects()
+projectsWindow()
+
+// function addBookToLibrary() {
+//     submit.addEventListener("click", (event) => {
+//       event.preventDefault(); // We don't want to submit this fake form
+//       var title = document.querySelector("#book-name")
+//       var temp = title.value
+//       var author = document.querySelector("#author-name")
+//       var pages = document.querySelector("#pages-number")
+//       var readStatus = document.querySelector("#read-status")
+//       if (title.value && author.value && pages.value !== "") {
+//         temp = new Book(title.value, author.value, pages.value, "on")
+//         myLibrary.push(temp)
+//         dialog.close(dialog.value); // Have to send the select box value here.
+//         showBooks()
+//       }
+//     });
+//   }
+
 // function doStuff() {
 // console.log(projects);
 //  }
