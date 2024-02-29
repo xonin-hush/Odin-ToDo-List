@@ -28,7 +28,7 @@ function createProject(Todo) {
 }
 let test = new ToDo("Xonin", "description3", "dueTime1", "priority2")//done
 
-createProject(test)//value=0
-createProject(test)//value=1
-createProject(test)//value=2
-createProject(test)//value=3
+// createProject(test)//value=0
+// createProject(test)//value=1
+// createProject(test)//value=2
+// createProject(test)//value=3
