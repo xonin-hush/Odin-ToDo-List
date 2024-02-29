@@ -1,3 +1,4 @@
+//this module should be responsible for all is it about Projects
 const dialog = document.querySelector("dialog")
 const addProject=document.querySelector("#add-project")
 const submit = dialog.querySelector("#submit")

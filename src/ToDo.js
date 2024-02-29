@@ -1,3 +1,4 @@
+//this module should be responsible for all is it about ToDos
 window.projects = []//done
 let i=0
 //creates project that we're going to put todo s in it
