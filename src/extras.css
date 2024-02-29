@@ -88,7 +88,7 @@ dialog::backdrop {
     outline: none;
 }
 
-#date-input {
+#priority-input,#date-input {
     background-color: #e8e8e8;
     padding: 11px 10px;
     border: 2px #818CF8 solid;
@@ -96,3 +96,4 @@ dialog::backdrop {
     color: #1e0e4b;
 }
 /* here ends the input card */
+

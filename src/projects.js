@@ -54,8 +54,9 @@ function getProjectInfo() {
     //   var temp = title.value
       var  projectDescription= document.querySelector("#description-input")
       var projectDeadLine = document.querySelector("#date-input")
-      console.log(projectTitle.value,projectDescription.value,projectDeadLine.value)
-      if (projectTitle.value && projectDescription.value && projectDeadLine.value !== "") {
+      var projectPriority = document.querySelector("#priority-input")
+      console.log(projectTitle.value,projectDescription.value,projectDeadLine.value,projectPriority.value)
+      if (projectTitle.value && projectDescription.value && projectDeadLine.value &&projectPriority.value !== "") {
         // temp = new Book(title.value, author.value, pages.value, "on")
         // myLibrary.push(temp)
         dialog.close(dialog.value); // Have to send the select box value here.
