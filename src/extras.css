@@ -96,4 +96,6 @@ dialog::backdrop {
     color: #1e0e4b;
 }
 /* here ends the input card */
-
+option{
+    background-color: #1e0e4b;
+}
