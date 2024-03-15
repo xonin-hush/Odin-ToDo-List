@@ -8,12 +8,18 @@ class ToDo {
         this.description = description
         this.dueTime = dueTime
         this.priority = priority
-    }
-    consoleLog() {
-        console.log(this.title, this.description, this.dueTime, this.priority)
-    }
+    }    
 }
 
+window.addEventListener('click', (e) => {
+    let element = e.target.getAttribute("class")
+    if(element=="card"){
+        const index=document.querySelector(".index")
+        // index.innerHTML=""
+    }
+    console.log(test)
+    console.log(e.target.value)
+  });
 export function testing() {
     // let test = new ToDo("test", "this is a test idk man", "tmrw?", "important")
     // test.consoleLog()
@@ -32,3 +38,6 @@ let test = new ToDo("Xonin", "description3", "dueTime1", "priority2")//done
 // createProject(test)//value=1
 // createProject(test)//value=2
 // createProject(test)//value=3
+function viewTodo(){
+
+}

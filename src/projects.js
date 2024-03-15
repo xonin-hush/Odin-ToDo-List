@@ -2,7 +2,7 @@
 const dialog = document.querySelector("dialog")
 const addProject = document.querySelector("#add-project")
 const submit = dialog.querySelector("#submit")
-
+let counter = 0
 class ProjectInfo {
   constructor(title, description, dueTime, priority) {
     this.title = title
@@ -11,7 +11,13 @@ class ProjectInfo {
     this.priority = priority
   }
 }
-
+window.addEventListener('click', (e) => {
+  let element = e.target.getAttribute("class")
+  if (element == "card") {
+    if (e.target.classList == "card")
+      console.log(e.target.getAttribute("counter"))
+  }
+});
 //takes info from "projects" and loops though it
 //handles projects on the DOM
 export function projectsWindow() {
@@ -21,16 +27,18 @@ export function projectsWindow() {
   myProjects.textContent = "My Projects"
   index.appendChild(myProjects)
   const projectsDiv = document.createElement("div")
-  let counter = 0
   for (let projectIndex of projects) {
     for (let projectProperty of projectIndex) {
       if (typeof projectProperty != "number") {
         console.log(projectProperty)
         const project = document.createElement("div")
+        if(!project.getAttribute("counter")){
+        project.setAttribute("counter", counter)
+        }
         project.classList.add("card")
         projectsDiv.classList.add("cards")
         // project.innerHTML = `<input type="checkbox" id="project" name="project" value="project${counter}">`
-        priorityColor(project,projectProperty.priority)
+        priorityColor(project, projectProperty.priority)
         projectCard(projectProperty, project)
         projectsDiv.appendChild(project)
         index.appendChild(projectsDiv)
@@ -94,6 +102,7 @@ function priorityColor(project, projectPriority) {
   }
 
 }
+
 // function doStuff() {
 // console.log(projects);
 //  }
