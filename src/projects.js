@@ -32,8 +32,8 @@ export function projectsWindow() {
       if (typeof projectProperty != "number") {
         console.log(projectProperty)
         const project = document.createElement("div")
-        if(!project.getAttribute("counter")){
-        project.setAttribute("counter", counter)
+        if (!project.getAttribute("counter")) {
+          project.setAttribute("counter", counter)
         }
         project.classList.add("card")
         projectsDiv.classList.add("cards")
@@ -63,7 +63,7 @@ function projectCard(projectProperty, project) { //this function creates a card
 }
 projectsWindow()
 
-function getProjectInfo() {
+function getProjectInfo() { //takes info from dialog form and sends it to projectsWindow
   submit.addEventListener("click", (event) => {
     event.preventDefault(); // We don't want to submit this fake form
     const project = []
