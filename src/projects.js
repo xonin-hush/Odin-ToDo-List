@@ -1,3 +1,4 @@
+import { viewTodo } from "./ToDo"
 //this module should be responsible for all is it about Projects
 const dialog = document.querySelector("dialog")
 const addProject = document.querySelector("#add-project")
@@ -31,6 +32,18 @@ export function projectsWindow() {
     for (let projectProperty of projectIndex) {
       if (typeof projectProperty != "number") {
         console.log(projectProperty)
+
+        window.addEventListener('click', (e) => {
+          let toDo = e.target.getAttribute("class")
+          if (toDo == "card") {
+            const index = document.querySelector(".index")
+            // index.innerHTML = ""
+            console.log(e.target)
+            viewTodo(projectProperty.title,projectProperty.description,projectProperty.dueTime,projectProperty.priority)
+          }
+        });
+
+
         const project = document.createElement("div")
         if (!project.getAttribute("counter")) {
           project.setAttribute("counter", counter)
@@ -75,6 +88,9 @@ function getProjectInfo() { //takes info from dialog form and sends it to projec
     console.log(projectTitle.value, projectDescription.value, projectDeadLine.value, projectPriority.value)
     if (projectTitle.value && projectDescription.value && projectDeadLine.value && projectPriority.value !== "") {
       temp = new ProjectInfo(projectTitle.value, projectDescription.value, projectDeadLine.value, projectPriority.value, "on")
+
+      // var temp = new ProjectInfo("projectTitle.value", "projectDescription.value", "projectDeadLine.value", "projectPriority.value", "on")
+
       project.push(temp)
       projects.push(project)
       console.log(projects)

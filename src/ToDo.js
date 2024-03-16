@@ -12,22 +12,27 @@ let i = 0
 // }
 
 
-export function testing() {
-    window.addEventListener('click', (e) => {
-        let toDo = e.target.getAttribute("class")
-        if (toDo == "card") {
-            const index = document.querySelector(".index")
-            index.innerHTML = ""
-            console.log("touched")
-
-        }
-    });
-}
-testing()
+// export function testing() {
+//     // window.addEventListener('click', (e) => {
+//     //     let toDo = e.target.getAttribute("class")
+//     //     if (toDo == "card") {
+//     //         const index = document.querySelector(".index")
+//     //         // index.innerHTML = ""
+//     //         console.log(e.target.description)
+//     //         viewTodo()
+//     //     }
+//     // });
+// }
+// testing()
 
 //let test = new ToDo("Xonin", "description3", "dueTime1", "priority2")//done
 
 
-function viewTodo() {
-
+export function viewTodo(projectTitle,projectDescription,projectDueTime,projectPriority) {
+    // const projectTitle = document.querySelector("project-title")
+    // const projectDescription = document.querySelector("description")
+    // let projectDueTime = e.getAttribute("dueTime")
+    // let projectPriority = e.getAttribute("priority")
+    console.log(projectTitle, projectDescription, projectDueTime, projectPriority)
+    // console.log(projectAttribute,projectDescription)
 }
