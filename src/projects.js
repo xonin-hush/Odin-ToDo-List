@@ -32,18 +32,7 @@ export function projectsWindow() {
     for (let projectProperty of projectIndex) {
       if (typeof projectProperty != "number") {
         console.log(projectProperty)
-
-        window.addEventListener('click', (e) => {
-          let toDo = e.target.getAttribute("class")
-          if (toDo == "card") {
-            const index = document.querySelector(".index")
-            // index.innerHTML = ""
-            console.log(e.target)
-            viewTodo(projectProperty.title,projectProperty.description,projectProperty.dueTime,projectProperty.priority)
-          }
-        });
-
-
+        viewTodo(projectProperty)
         const project = document.createElement("div")
         if (!project.getAttribute("counter")) {
           project.setAttribute("counter", counter)
