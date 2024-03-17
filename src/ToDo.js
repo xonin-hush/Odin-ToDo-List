@@ -15,7 +15,7 @@ export function viewTodo(projectProperty) {
         let toDo = e.target.getAttribute("class")
         if (toDo == "card") {
           const index = document.querySelector(".index")
-        //   index.innerHTML = ""
+          index.innerHTML = ""
           console.log(e.target)
           console.log("this is working")
           console.log(projectProperty.title,projectProperty.description,projectProperty.dueTime,projectProperty.priority)

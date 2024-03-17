@@ -32,7 +32,7 @@ export function projectsWindow() {
     for (let projectProperty of projectIndex) {
       if (typeof projectProperty != "number") {
         console.log(projectProperty)
-        viewTodo(projectProperty)
+        // viewTodo(projectProperty) come back to this
         const project = document.createElement("div")
         if (!project.getAttribute("counter")) {
           project.setAttribute("counter", counter)

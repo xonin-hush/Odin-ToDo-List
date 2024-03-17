@@ -10,9 +10,9 @@ dialog[open] {
 dialog button{
     color: white;
     font-weight: bold;
-    background-color: #7747ff;
+    background-color: #3a73ed;
     padding: 11px 10px;
-    border: 2px #7747ff solid;
+    border: 2px #3a73ed solid;
     border-radius: 5px;
     margin-top: 1rem;
     padding-left: 1.5rem;
@@ -33,7 +33,7 @@ dialog::backdrop {
 }
 
 #input-project {
-    color: #7747ff;
+    color: #3a73ed;
     font-family: "Anta", sans-serif;
     font-weight: 600;
     font-style: normal;
@@ -41,7 +41,7 @@ dialog::backdrop {
 }
 
 #input-create {
-    color: #1e0e4b;
+    color: #0e3d4b;
     font-family: "Anta", sans-serif;
     font-weight: 600;
     font-style: normal;
@@ -50,7 +50,7 @@ dialog::backdrop {
 }
 
 #input-discription {
-    color: #1e0e4b;
+    color: #0e3d4b;
     font-weight: bold;
     font-size: 15px;
 }
@@ -93,9 +93,9 @@ dialog::backdrop {
     padding: 11px 10px;
     border: 2px #818CF8 solid;
     border-radius: 5px;
-    color: #1e0e4b;
+    color: #0e3d4b;
 }
 /* here ends the input card */
 option{
-    background-color: #1e0e4b;
+    background-color: #0e3d4b;
 }
