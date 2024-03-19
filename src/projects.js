@@ -12,13 +12,16 @@ class ProjectInfo {
     this.priority = priority
   }
 }
+//checks if the element clicked is it's a card then do something about it
 window.addEventListener('click', (e) => {
   let element = e.target.getAttribute("class")
   if (element == "card") {
     if (e.target.classList == "card")
-      console.log(e.target.getAttribute("counter"))
+      console.log(e.target)
   }
 });
+
+
 //takes info from "projects" and loops though it
 //handles projects on the DOM
 export function projectsWindow() {
@@ -34,9 +37,6 @@ export function projectsWindow() {
         console.log(projectProperty)
         // viewTodo(projectProperty) come back to this
         const project = document.createElement("div")
-        if (!project.getAttribute("counter")) {
-          project.setAttribute("counter", counter)
-        }
         project.classList.add("card")
         projectsDiv.classList.add("cards")
         // project.innerHTML = `<input type="checkbox" id="project" name="project" value="project${counter}">`
@@ -45,7 +45,7 @@ export function projectsWindow() {
         projectsDiv.appendChild(project)
         index.appendChild(projectsDiv)
       }
-      counter++
+
     }
   }
 }
@@ -78,9 +78,11 @@ function getProjectInfo() { //takes info from dialog form and sends it to projec
     if (projectTitle.value && projectDescription.value && projectDeadLine.value && projectPriority.value !== "") {
       temp = new ProjectInfo(projectTitle.value, projectDescription.value, projectDeadLine.value, projectPriority.value, "on")
 
-      // var temp = new ProjectInfo("projectTitle.value", "projectDescription.value", "projectDeadLine.value", "projectPriority.value", "on")
 
       project.push(temp)
+      //this is setting the counter in the project array-->[projectinfo,counter]
+      project.push(counter)
+      counter++
       projects.push(project)
       console.log(projects)
       projectsWindow()
