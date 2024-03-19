@@ -30,6 +30,6 @@ window.addEventListener('click', (e) => {
   let element = e.target.getAttribute("class")
   if (element == "card") {
     if (e.target.classList == "card")
-      console.log(e.target)
+      console.log(e.target.value)
   }
 });

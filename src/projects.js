@@ -3,7 +3,6 @@ import { viewTodo } from "./ToDo"
 const dialog = document.querySelector("dialog")
 const addProject = document.querySelector("#add-project")
 const submit = dialog.querySelector("#submit")
-let counter = 0
 class ProjectInfo {
   constructor(title, description, dueTime, priority) {
     this.title = title
@@ -19,6 +18,7 @@ export function showProjects() {
   const myProjects = document.createElement("h1")
   myProjects.textContent = "My Projects"
   index.appendChild(myProjects)
+let counter = 0
   projects.forEach(element => {
     console.log(element[0].title)
     const projectsContainer = document.createElement("div")
@@ -28,7 +28,9 @@ export function showProjects() {
     priorityColor(project, element[0].priority)
     projectCard(element[0], project)
     projectsContainer.appendChild(project)
+    project.value=counter
     index.appendChild(projectsContainer)
+    counter++
   });
 }
 
@@ -48,6 +50,7 @@ function projectCard(projectProperty, project) { //this function creates a card
 }
 
 function getProjectInfo() { //takes info from dialog form and sends it to projectsWindow
+  let counter=0
   submit.addEventListener("click", (event) => {
     event.preventDefault(); // We don't want to submit this fake form
     const project = []
@@ -56,18 +59,14 @@ function getProjectInfo() { //takes info from dialog form and sends it to projec
     var projectDescription = document.querySelector("#description-input")
     var projectDeadLine = document.querySelector("#date-input")
     var projectPriority = document.querySelector("#priority-input")
-    // console.log(projectTitle.value, projectDescription.value, projectDeadLine.value, projectPriority.value)
     if (projectTitle.value && projectDescription.value && projectDeadLine.value && projectPriority.value !== "") {
       temp = new ProjectInfo(projectTitle.value, projectDescription.value, projectDeadLine.value, projectPriority.value, "on")
-
-
       project.push(temp)
       //this is setting the counter in the project array-->[projectinfo,counter]
       project.push(counter)
       counter++
       projects.push(project)
       console.log(projects)
-      // projectsWindow()
       showProjects()
       dialog.close(dialog.value); // Have to send the select box value here.
     }
