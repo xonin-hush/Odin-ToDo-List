@@ -23,3 +23,13 @@ export function viewTodo(projectProperty) {
         }
       });
 }
+
+
+//checks if the element clicked is it's a card then do something about it
+window.addEventListener('click', (e) => {
+  let element = e.target.getAttribute("class")
+  if (element == "card") {
+    if (e.target.classList == "card")
+      console.log(e.target)
+  }
+});

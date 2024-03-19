@@ -12,43 +12,26 @@ class ProjectInfo {
     this.priority = priority
   }
 }
-//checks if the element clicked is it's a card then do something about it
-window.addEventListener('click', (e) => {
-  let element = e.target.getAttribute("class")
-  if (element == "card") {
-    if (e.target.classList == "card")
-      console.log(e.target)
-  }
-});
 
-
-//takes info from "projects" and loops though it
-//handles projects on the DOM
-export function projectsWindow() {
+export function showProjects() {
   const index = document.querySelector(".index")
   index.innerHTML = ""
   const myProjects = document.createElement("h1")
   myProjects.textContent = "My Projects"
   index.appendChild(myProjects)
-  const projectsDiv = document.createElement("div")
-  for (let projectIndex of projects) {
-    for (let projectProperty of projectIndex) {
-      if (typeof projectProperty != "number") {
-        console.log(projectProperty)
-        // viewTodo(projectProperty) come back to this
-        const project = document.createElement("div")
-        project.classList.add("card")
-        projectsDiv.classList.add("cards")
-        // project.innerHTML = `<input type="checkbox" id="project" name="project" value="project${counter}">`
-        priorityColor(project, projectProperty.priority)
-        projectCard(projectProperty, project)
-        projectsDiv.appendChild(project)
-        index.appendChild(projectsDiv)
-      }
-
-    }
-  }
+  projects.forEach(element => {
+    console.log(element[0].title)
+    const projectsContainer = document.createElement("div")
+    const project = document.createElement("div")
+    project.classList.add("card")
+    projectsContainer.classList.add("cards")
+    priorityColor(project, element[0].priority)
+    projectCard(element[0], project)
+    projectsContainer.appendChild(project)
+    index.appendChild(projectsContainer)
+  });
 }
+
 function projectCard(projectProperty, project) { //this function creates a card
   const projectTitle = document.createElement("div")
   projectTitle.textContent = projectProperty.title
@@ -63,7 +46,6 @@ function projectCard(projectProperty, project) { //this function creates a card
   project.appendChild(projectDueTime)
   project.appendChild(projectPriority)
 }
-projectsWindow()
 
 function getProjectInfo() { //takes info from dialog form and sends it to projectsWindow
   submit.addEventListener("click", (event) => {
@@ -74,7 +56,7 @@ function getProjectInfo() { //takes info from dialog form and sends it to projec
     var projectDescription = document.querySelector("#description-input")
     var projectDeadLine = document.querySelector("#date-input")
     var projectPriority = document.querySelector("#priority-input")
-    console.log(projectTitle.value, projectDescription.value, projectDeadLine.value, projectPriority.value)
+    // console.log(projectTitle.value, projectDescription.value, projectDeadLine.value, projectPriority.value)
     if (projectTitle.value && projectDescription.value && projectDeadLine.value && projectPriority.value !== "") {
       temp = new ProjectInfo(projectTitle.value, projectDescription.value, projectDeadLine.value, projectPriority.value, "on")
 
@@ -85,7 +67,8 @@ function getProjectInfo() { //takes info from dialog form and sends it to projec
       counter++
       projects.push(project)
       console.log(projects)
-      projectsWindow()
+      // projectsWindow()
+      showProjects()
       dialog.close(dialog.value); // Have to send the select box value here.
     }
   });
