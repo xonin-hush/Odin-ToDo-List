@@ -50,7 +50,6 @@ function projectCard(projectProperty, project) { //this function creates a card
 }
 
 function getProjectInfo() { //takes info from dialog form and sends it to projectsWindow
-  let counter=0
   submit.addEventListener("click", (event) => {
     event.preventDefault(); // We don't want to submit this fake form
     const project = []
@@ -60,11 +59,10 @@ function getProjectInfo() { //takes info from dialog form and sends it to projec
     var projectDeadLine = document.querySelector("#date-input")
     var projectPriority = document.querySelector("#priority-input")
     if (projectTitle.value && projectDescription.value && projectDeadLine.value && projectPriority.value !== "") {
-      temp = new ProjectInfo(projectTitle.value, projectDescription.value, projectDeadLine.value, projectPriority.value, "on")
+      // temp = new ProjectInfo(projectTitle.value, projectDescription.value, projectDeadLine.value, projectPriority.value)
+      temp = new ProjectInfo("projectTitle.value", "projectDescription.value", "projectDeadLine.value", "projectPriority.value")
       project.push(temp)
-      //this is setting the counter in the project array-->[projectinfo,counter]
-      project.push(counter)
-      counter++
+      // this is setting the counter in the project array-->[projectinfo,counter]
       projects.push(project)
       console.log(projects)
       showProjects()
