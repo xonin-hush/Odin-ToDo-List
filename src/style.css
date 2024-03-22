@@ -255,3 +255,11 @@ span svg {
     margin-bottom: 15px;
 
 }
+
+.project-info-card{
+    margin-top:10px;
+    min-width: 90rem;
+    display: flex;
+    font-weight: bold;
+    justify-content: space-between;
+}

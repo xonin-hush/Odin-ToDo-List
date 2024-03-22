@@ -28,9 +28,9 @@ export function showTodo() {
       myTodos.textContent = "My Todos"
       todoHeader.appendChild(myTodos)
       todoHeader.appendChild(addButton)
+      projectInfoCard(element)
       index.appendChild(todoHeader)
       // index.appendChild(projectInfoCard)
-      projectInfoCard(element)
     }
     if (e.target.getAttribute("class") == "button add-todo-button") {
       todoDialog.showModal()
@@ -88,11 +88,15 @@ function projectInfoCard(element) {
   if (projects[element][0]) {
     projectInfoCard.classList.add("card")
     const projectInfoTitle = document.createElement("div")
-    projectInfoTitle.textContent = projects[element][0].title
+    projectInfoTitle.textContent ="Project: "+ projects[element][0].title
     const projectInfoDescription = document.createElement("div")
-    projectInfoDescription.textContent = projects[element][0].description
+    projectInfoDescription.textContent ="Description: "+ projects[element][0].description
+    const projectInfoDueTime= document.createElement("div")
+    projectInfoDueTime.textContent="Dead Line: "+ projects[element][0].dueTime
     projectInfoCard.appendChild(projectInfoTitle)
     projectInfoCard.appendChild(projectInfoDescription)
+    projectInfoCard.appendChild(projectInfoDueTime)
+    projectInfoCard.classList.add("project-info-card")
   }
   index.appendChild(projectInfoCard)
 
