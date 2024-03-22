@@ -2,21 +2,33 @@
 window.projects = []//done
 //creates project that we're going to put todo s in it
 class ToDo {
-    constructor(title, description, dueTime, priority) {
-        this.title = title
-        this.description = description
-        this.dueTime = dueTime
-        this.priority = priority
-    }
+  constructor(title, description, dueTime, priority) {
+    this.title = title
+    this.description = description
+    this.dueTime = dueTime
+    this.priority = priority
+  }
 }
 const todoDialog = document.querySelector(".todo-dialog")
-const submit=todoDialog.querySelector("#submit")
+const submit = todoDialog.querySelector("#submit")
 export function showTodo() {
   window.addEventListener('click', (e) => {
     let toDo = e.target.getAttribute("class")
     if (toDo == "card") {
       const index = document.querySelector(".index")
       let element = e.target.value
+      // projectInfoCard(element)
+      const projectInfoCard = document.createElement("div")
+      if (projects[element][0]) {
+        projectInfoCard.classList.add("card")
+        const projectInfoTitle = document.createElement("div")
+        projectInfoTitle.textContent = projects[element][0].title
+        const projectInfoDescription = document.createElement("div")
+        projectInfoDescription.textContent = projects[element][0].description
+        projectInfoCard.appendChild(projectInfoTitle)
+        projectInfoCard.appendChild(projectInfoDescription)
+      }
+      console.log(element)
       console.log(projects[element][0].priority)//this is how to get projects info 
       index.innerHTML = ""
       const todoHeader = document.createElement("div")
@@ -26,9 +38,7 @@ export function showTodo() {
       todoHeader.appendChild(myTodos)
       todoHeader.appendChild(addButton)
       index.appendChild(todoHeader)
-
-
-
+      index.appendChild(projectInfoCard)
     }
     if (e.target.getAttribute("class") == "button add-todo-button") {
       todoDialog.showModal()
@@ -58,6 +68,7 @@ function getTodoInfo() { //takes info from dialog form and sends it to projectsW
       // this is setting the counter in the project array-->[projectinfo,counter]
       console.log(projects)
       showTodo()
+      todoCard()
       todoDialog.close(todoDialog.value); // Have to send the select box value here.
     }
   });
@@ -79,7 +90,16 @@ function todoCard(project) {
   project.appendChild(todoPriority)
 
 }
+function projectInfoCard(element) {
+  const index = document.querySelector(".index")
+  const projectInfoCard = document.createElement("div")
+  projectInfoCard.classList.add("card")
+  if (projects[element][0]) {
+    projectInfoCard.textContent = projects[element][0].title
+  }
+  index.appendChild(projectInfoCard)
 
+}
 //checks if the element clicked is it's a card then do something about it
 // window.addEventListener('click', (e) => {
 // let element = e.target.getAttribute("class")
