@@ -18,16 +18,7 @@ export function showTodo() {
       const index = document.querySelector(".index")
       let element = e.target.value
       // projectInfoCard(element)
-      const projectInfoCard = document.createElement("div")
-      if (projects[element][0]) {
-        projectInfoCard.classList.add("card")
-        const projectInfoTitle = document.createElement("div")
-        projectInfoTitle.textContent = projects[element][0].title
-        const projectInfoDescription = document.createElement("div")
-        projectInfoDescription.textContent = projects[element][0].description
-        projectInfoCard.appendChild(projectInfoTitle)
-        projectInfoCard.appendChild(projectInfoDescription)
-      }
+
       console.log(element)
       console.log(projects[element][0].priority)//this is how to get projects info 
       index.innerHTML = ""
@@ -38,7 +29,8 @@ export function showTodo() {
       todoHeader.appendChild(myTodos)
       todoHeader.appendChild(addButton)
       index.appendChild(todoHeader)
-      index.appendChild(projectInfoCard)
+      // index.appendChild(projectInfoCard)
+      projectInfoCard(element)
     }
     if (e.target.getAttribute("class") == "button add-todo-button") {
       todoDialog.showModal()
@@ -93,9 +85,14 @@ function todoCard(project) {
 function projectInfoCard(element) {
   const index = document.querySelector(".index")
   const projectInfoCard = document.createElement("div")
-  projectInfoCard.classList.add("card")
   if (projects[element][0]) {
-    projectInfoCard.textContent = projects[element][0].title
+    projectInfoCard.classList.add("card")
+    const projectInfoTitle = document.createElement("div")
+    projectInfoTitle.textContent = projects[element][0].title
+    const projectInfoDescription = document.createElement("div")
+    projectInfoDescription.textContent = projects[element][0].description
+    projectInfoCard.appendChild(projectInfoTitle)
+    projectInfoCard.appendChild(projectInfoDescription)
   }
   index.appendChild(projectInfoCard)
 
