@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../src/style.css">
     <link rel="stylesheet" href="../src/dialogs.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.projectDialog.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Anta&family=Poppins:wght@100&family=Roboto:wght@300&family=Whisper&display=swap"
         rel="stylesheet">
@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <dialog>
+    <dialog id="project-dialog">
         <div class="input-container" id="new-button">
             <div class="input-title">
                 <div id="input-create">Create&nbsp;</div>
@@ -25,19 +25,19 @@
             </div>
             <div class="coolinput">
                 <label for="input" class="text">Title:</label>
-                <input type="text" name="input" class="input" id="title-input" value="project1">
+                <input type="text" name="input" class="input" id="project-title-input" value="project1">
             </div>
             <div class="coolinput">
                 <label for="input" class="text">Description:</label>
-                <input type="text" name="input" class="input" id="description-input" value="project2">
+                <input type="text" name="input" class="input" id="project-description-input" value="project2">
             </div>
             <div class="coolinput">
                 <label for="input" class="text">DeadLine:</label>
-                <input type="date" name="input" class="input" id="date-input" >
+                <input type="date" name="input" class="input" id="date-input"  class="project-date-input" >
             </div>
             <div class="coolinput">
                 <label for="input" class="text">Priority:</label>
-                <select name="input" id="priority-input">
+                <select name="input" id=priority-input class="project-priority-input">
                     <option value="priority1" style="color:#ff1717 ;">Priority 1</option>
                     <option value="priority2" style="color:#ffe817;">Priority 2</option>
                     <option value="priority3" style="color:#aeff17 ;">Priority 3</option>
@@ -54,11 +54,11 @@
             </div>
             <div class="coolinput">
                 <label for="input" class="text">Title:</label>
-                <input type="text" name="input" class="input" id="title-input">
+                <input type="text" name="input" class="input" id="todo-title-input">
             </div>
             <div class="coolinput">
                 <label for="input" class="text">Description:</label>
-                <input type="text" name="input" class="input" id="description-input">
+                <input type="text" name="input"  class="input" id="description-input">
             </div>
             <div class="coolinput">
                 <label for="input" class="text">DeadLine:</label>
@@ -110,7 +110,7 @@
         <ul>
             <li>
 
-                <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <span ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" >
                         <title>home-outline</title>
                         <path d="M12 5.69L17 10.19V18H15V12H9V18H7V10.19L12 5.69M12 3L2 12H5V20H11V14H13V20H19V12H22" />
                     </svg>
