@@ -68,7 +68,7 @@ function getTodoInfo() { //takes info from dialog form and sends it to projectsW
 }
 getTodoInfo()
 
-function todoCard(project) {
+function todoCard(todo) {
   const todoTitle = document.createElement("div")
   todoTitle.textContent = projectProperty.title
   const todoDescription = document.createElement("div")
