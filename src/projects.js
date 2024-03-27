@@ -1,8 +1,8 @@
 import { viewTodo } from "./ToDo"
 //this module should be responsible for all is it about Projects
-const dialog = document.querySelector("dialog")
+const projectDialog = document.querySelector("#project-dialog")
 const addProject = document.querySelector("#add-project")
-const submit = dialog.querySelector("#submit")
+const submit = document.querySelector("#submit")
 class ProjectInfo {
   constructor(title, description, dueTime, priority) {
     this.title = title
@@ -53,25 +53,24 @@ function getProjectInfo() { //takes info from dialog form and sends it to projec
   submit.addEventListener("click", (event) => {
     event.preventDefault(); // We don't want to submit this fake form
     const project = []
-    var projectTitle = document.querySelector("#title-input")
-    var temp = projectTitle.value
-    var projectDescription = document.querySelector("#description-input")
+    var projectTitle = document.querySelector("#project-title-input")
+    var projectDescription = document.querySelector("#project-description-input")
     var projectDeadLine = document.querySelector("#date-input")
     var projectPriority = document.querySelector("#priority-input")
     if (projectTitle.value && projectDescription.value && projectDeadLine.value && projectPriority.value !== "") {
-      temp = new ProjectInfo(projectTitle.value, projectDescription.value, projectDeadLine.value, projectPriority.value)
+      var temp = new ProjectInfo(projectTitle.value, projectDescription.value, projectDeadLine.value, projectPriority.value)
       // temp = new ProjectInfo("projectTitle.value", "projectDescription.value", "projectDeadLine.value", "projectPriority.value")
       project.push(temp)
       // this is setting the counter in the project array-->[projectinfo,counter]
       projects.push(project)
       console.log(projects)
       showProjects()
-      dialog.close(dialog.value); // Have to send the select box value here.
+      projectDialog.close(projectDialog.value); // Have to send the select box value here.
     }
   });
 }
 addProject.addEventListener("click", () => {
-  dialog.showModal()
+  projectDialog.showModal()
 });
 getProjectInfo()
 function priorityColor(project, projectPriority) {

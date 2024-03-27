@@ -1,3 +1,6 @@
+const todoDialog = document.querySelector(".todo-dialog")
+const submit = todoDialog.querySelector("#submit")
+
 //this module should be responsible for all is it about ToDos
 window.projects = []//done
 //creates project that we're going to put todo s in it
@@ -9,8 +12,6 @@ class ToDo {
     this.priority = priority
   }
 }
-const todoDialog = document.querySelector(".todo-dialog")
-const submit = todoDialog.querySelector("#submit")
 export function showTodo() {
   window.addEventListener('click', (e) => {
     let toDo = e.target.getAttribute("class")
@@ -49,18 +50,18 @@ function addTodoButton() {
 function getTodoInfo() { //takes info from dialog form and sends it to projectsWindow
   submit.addEventListener("click", (event) => {
     event.preventDefault(); // We don't want to submit this fake form
-    var todoTitle = document.querySelector("#title-input")
+    var todoTitle = document.querySelector("#todo-title-input")
+    console.log(todoTitle.value)
     var temp = todoTitle.value
     var todoDescription = document.querySelector("#description-input")
     var todoDeadLine = document.querySelector("#date-input")
     var todoPriority = document.querySelector("#priority-input")
     if (todoTitle.value && todoDescription.value && todoDeadLine.value && todoPriority.value !== "") {
-      temp = new ProjectInfo(projectTitle.value, projectDescription.value, projectDeadLine.value, projectPriority.value)
+      temp = new ToDo(todoTitle.value, todoDescription.value, todoDeadLine.value, todoPriority.value)
       // temp = new ToDo("projectTitle.value", "projectDescription.value", "projectDeadLine.value", "projectPriority.value")
       // this is setting the counter in the project array-->[projectinfo,counter]
-      console.log(projects)
       showTodo()
-      todoCard()
+      todoCard() 
       todoDialog.close(todoDialog.value); // Have to send the select box value here.
     }
   });
