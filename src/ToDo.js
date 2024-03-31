@@ -1,6 +1,6 @@
 const todoDialog = document.querySelector(".todo-dialog")
 const submit = todoDialog.querySelector("#submit")
-
+var currentLocation=""
 //this module should be responsible for all is it about ToDos
 window.projects = []//done
 //creates project that we're going to put todo s in it
@@ -22,6 +22,7 @@ export function showTodo() {
 
       console.log(element)
       console.log(projects[element][0].priority)//this is how to get projects info 
+      currentLocation=element
       index.innerHTML = ""
       const todoHeader = document.createElement("div")
       const myTodos = document.createElement("h1")
@@ -52,16 +53,17 @@ function getTodoInfo() { //takes info from dialog form and sends it to projectsW
     event.preventDefault(); // We don't want to submit this fake form
     var todoTitle = document.querySelector("#todo-title-input")
     console.log(todoTitle.value)
-    var temp = todoTitle.value
     var todoDescription = document.querySelector("#description-input")
     var todoDeadLine = document.querySelector("#date-input")
     var todoPriority = document.querySelector("#priority-input")
     if (todoTitle.value && todoDescription.value && todoDeadLine.value && todoPriority.value !== "") {
-      temp = new ToDo(todoTitle.value, todoDescription.value, todoDeadLine.value, todoPriority.value)
+      var todo = new ToDo(todoTitle.value, todoDescription.value, todoDeadLine.value, todoPriority.value)
       // temp = new ToDo("projectTitle.value", "projectDescription.value", "projectDeadLine.value", "projectPriority.value")
       // this is setting the counter in the project array-->[projectinfo,counter]
+      projects[currentLocation].push(todo)
+      console.log(projects)
+      todoCard(todo) 
       showTodo()
-      todoCard() 
       todoDialog.close(todoDialog.value); // Have to send the select box value here.
     }
   });
@@ -70,17 +72,14 @@ getTodoInfo()
 
 function todoCard(todo) {
   const todoTitle = document.createElement("div")
-  todoTitle.textContent = projectProperty.title
+  todoTitle.textContent = todo.title
   const todoDescription = document.createElement("div")
-  todoDescription.textContent = projectProperty.description
+  todoDescription.textContent = todo.description
   const todoDueTime = document.createElement("div")
-  todoDueTime.textContent = projectProperty.dueTime
+  todoDueTime.textContent = todo.dueTime
   const todoPriority = document.createElement("div")
-  todoPriority.textContent = projectProperty.priority
-  project.appendChild(todoTitle)
-  project.appendChild(todoDescription)
-  project.appendChild(todoDueTime)
-  project.appendChild(todoPriority)
+  todoPriority.textContent = todo.priority
+  console.log(todoTitle,todoDescription,todoDueTime,todoPriority)
 
 }
 function projectInfoCard(element) {
