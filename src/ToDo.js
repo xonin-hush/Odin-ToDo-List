@@ -1,8 +1,12 @@
 import { divide } from "lodash"
+//todo global variables
+var temp = ""
 
+
+//-----------------------
 const todoDialog = document.querySelector(".todo-dialog")
 const submit = todoDialog.querySelector("#submit")
-var currentLocation=""
+var currentLocation = ""
 //this module should be responsible for all is it about ToDos
 window.projects = []//done
 //creates project that we're going to put todo s in it
@@ -20,22 +24,18 @@ export function showTodo() {
     if (toDo == "card") {
       const index = document.querySelector(".index")
       let element = e.target.value
-      console.log(projects[element][0].priority)//this is how to get projects info 
-      currentLocation=element
+      // console.log(projects[element][0].priority)//this is how to get projects info 
+      currentLocation = element
       index.innerHTML = ""
       const todoHeader = document.createElement("div")
       const myTodos = document.createElement("h1")
       const addButton = addTodoButton()
-      const todoContainer=document.createElement("div")
-      const todo=document.createElement("div")
-      todoContainer.classList.add("cards")
-      todo.classList.add("card")
       myTodos.textContent = "My Todos"
+      console.log("this", temp)
       todoHeader.appendChild(myTodos)
       todoHeader.appendChild(addButton)
       projectInfoCard(element)
       index.appendChild(todoHeader)
-      index.appendChild(todoContainer)
       // index.appendChild(projectInfoCard)
     }
     if (e.target.getAttribute("class") == "button add-todo-button") {
@@ -56,33 +56,42 @@ function getTodoInfo() { //takes info from dialog form and sends it to projectsW
   submit.addEventListener("click", (event) => {
     event.preventDefault(); // We don't want to submit this fake form
     var todoTitle = document.querySelector("#todo-title-input")
-    console.log(todoTitle.value)
     var todoDescription = document.querySelector("#description-input")
     var todoDeadLine = document.querySelector("#date-input")
     var todoPriority = document.querySelector("#priority-input")
     if (todoTitle.value && todoDescription.value && todoDeadLine.value && todoPriority.value !== "") {
-      var todo = new ToDo(todoTitle.value, todoDescription.value, todoDeadLine.value, todoPriority.value)
+      temp = new ToDo(todoTitle.value, todoDescription.value, todoDeadLine.value, todoPriority.value)
       // this is setting the counter in the project array-->[projectinfo,counter]
-      projects[currentLocation].push(todo)
+      projects[currentLocation].push(temp)
       console.log(projects)
-      todoCard(todo)
-      showTodo()
+      // showTodo()
+      appendTodo()
+
       todoDialog.close(todoDialog.value); // Have to send the select box value here.
     }
   });
 }
 getTodoInfo()
 
-function todoCard(todo) {
+function todoCard(todoInfo, todo) {
+
   const todoTitle = document.createElement("div")
-  todoTitle.textContent = todo.title
+  todoTitle.textContent = todoInfo.title
   const todoDescription = document.createElement("div")
-  todoDescription.textContent = todo.description
+  todoDescription.textContent = todoInfo.description
   const todoDueTime = document.createElement("div")
-  todoDueTime.textContent = todo.dueTime
+  todoDueTime.textContent = todoInfo.dueTime
   const todoPriority = document.createElement("div")
-  todoPriority.textContent = todo.priority
-  console.log(todoTitle,todoDescription,todoDueTime,todoPriority)
+  todoPriority.textContent = todoInfo.priority
+  const todoCheckbox= document.createElement("div")
+  todoCheckbox.innerHTML='<label class="checkbox-btn"><label for="checkbox"></label><input id="checkbox" type="checkbox"><span class="checkmark"></span></label>'
+  todo.appendChild(todoCheckbox)
+  todo.appendChild(todoTitle)
+  todo.appendChild(todoDescription)
+  todo.appendChild(todoDueTime)
+  todo.appendChild(todoPriority)
+
+
 
 
 }
@@ -92,11 +101,11 @@ function projectInfoCard(element) {
   if (projects[element][0]) {
     projectInfoCard.classList.add("card")
     const projectInfoTitle = document.createElement("div")
-    projectInfoTitle.textContent ="Project: "+ projects[element][0].title
+    projectInfoTitle.textContent = "Project: " + projects[element][0].title
     const projectInfoDescription = document.createElement("div")
-    projectInfoDescription.textContent ="Description: "+ projects[element][0].description
-    const projectInfoDueTime= document.createElement("div")
-    projectInfoDueTime.textContent="Dead Line: "+ projects[element][0].dueTime
+    projectInfoDescription.textContent = "Description: " + projects[element][0].description
+    const projectInfoDueTime = document.createElement("div")
+    projectInfoDueTime.textContent = "Dead Line: " + projects[element][0].dueTime
     projectInfoCard.appendChild(projectInfoTitle)
     projectInfoCard.appendChild(projectInfoDescription)
     projectInfoCard.appendChild(projectInfoDueTime)
@@ -113,3 +122,16 @@ function projectInfoCard(element) {
 // console.log(e.target.value)
 // }
 // });
+function appendTodo() {
+  const index = document.querySelector(".index")
+  const todoContainer = document.createElement("div")
+  todoContainer.classList.add("cards")
+  const todo = document.createElement("div")
+  todo.classList.add("card")
+  if (temp != "") {
+    todoCard(temp, todo)
+    console.log("hhhhhhhhhhhhheeeelo")
+    todoContainer.appendChild(todo)
+    index.appendChild(todoContainer)
+  }
+}
