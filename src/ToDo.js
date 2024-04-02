@@ -1,3 +1,5 @@
+import { divide } from "lodash"
+
 const todoDialog = document.querySelector(".todo-dialog")
 const submit = todoDialog.querySelector("#submit")
 var currentLocation=""
@@ -18,20 +20,22 @@ export function showTodo() {
     if (toDo == "card") {
       const index = document.querySelector(".index")
       let element = e.target.value
-      // projectInfoCard(element)
-
-      console.log(element)
       console.log(projects[element][0].priority)//this is how to get projects info 
       currentLocation=element
       index.innerHTML = ""
       const todoHeader = document.createElement("div")
       const myTodos = document.createElement("h1")
       const addButton = addTodoButton()
+      const todoContainer=document.createElement("div")
+      const todo=document.createElement("div")
+      todoContainer.classList.add("cards")
+      todo.classList.add("card")
       myTodos.textContent = "My Todos"
       todoHeader.appendChild(myTodos)
       todoHeader.appendChild(addButton)
       projectInfoCard(element)
       index.appendChild(todoHeader)
+      index.appendChild(todoContainer)
       // index.appendChild(projectInfoCard)
     }
     if (e.target.getAttribute("class") == "button add-todo-button") {
@@ -58,11 +62,10 @@ function getTodoInfo() { //takes info from dialog form and sends it to projectsW
     var todoPriority = document.querySelector("#priority-input")
     if (todoTitle.value && todoDescription.value && todoDeadLine.value && todoPriority.value !== "") {
       var todo = new ToDo(todoTitle.value, todoDescription.value, todoDeadLine.value, todoPriority.value)
-      // temp = new ToDo("projectTitle.value", "projectDescription.value", "projectDeadLine.value", "projectPriority.value")
       // this is setting the counter in the project array-->[projectinfo,counter]
       projects[currentLocation].push(todo)
       console.log(projects)
-      todoCard(todo) 
+      todoCard(todo)
       showTodo()
       todoDialog.close(todoDialog.value); // Have to send the select box value here.
     }
@@ -80,6 +83,7 @@ function todoCard(todo) {
   const todoPriority = document.createElement("div")
   todoPriority.textContent = todo.priority
   console.log(todoTitle,todoDescription,todoDueTime,todoPriority)
+
 
 }
 function projectInfoCard(element) {

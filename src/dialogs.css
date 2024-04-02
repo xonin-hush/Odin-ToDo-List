@@ -4,8 +4,11 @@ dialog[open] {
     top: 40%;
     left: 50%;
     background-color: #e8e8e8;
-    height: 17rem;
+    height: 20rem;
     margin: 0%;
+
+    border-radius: 10px;
+    border-color:#e8e8e8 ;
 }
 dialog button{
     color: white;
