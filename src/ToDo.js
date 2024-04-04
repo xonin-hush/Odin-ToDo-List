@@ -1,7 +1,8 @@
 import { divide } from "lodash"
 //todo global variables
 var temp = ""
-
+let counter = ""
+let element = ""
 
 //-----------------------
 const todoDialog = document.querySelector(".todo-dialog")
@@ -19,13 +20,18 @@ class ToDo {
   }
 }
 export function showTodo() {
+  //  function showTodo() {
+  counter = 1
   window.addEventListener('click', (e) => {
     let toDo = e.target.getAttribute("class")
+    console.log(e.target.getAttribute("class"))
     if (toDo == "card") {
       const index = document.querySelector(".index")
-      let element = e.target.value
+      element = e.target.value
       // console.log(projects[element][0].priority)//this is how to get projects info 
+      console.log(e.target)
       currentLocation = element
+      console.log(currentLocation)
       index.innerHTML = ""
       const todoHeader = document.createElement("div")
       const myTodos = document.createElement("h1")
@@ -37,6 +43,10 @@ export function showTodo() {
       projectInfoCard(element)
       index.appendChild(todoHeader)
       // index.appendChild(projectInfoCard)
+    }
+    if (e.target.getAttribute("class") == "card todo-card") {
+      editTodo()
+      console.log(e.target.value)
     }
     if (e.target.getAttribute("class") == "button add-todo-button") {
       todoDialog.showModal()
@@ -72,9 +82,7 @@ function getTodoInfo() { //takes info from dialog form and sends it to projectsW
   });
 }
 getTodoInfo()
-
 function todoCard(todoInfo, todo) {
-
   const todoTitle = document.createElement("div")
   todoTitle.textContent = todoInfo.title
   const todoDescription = document.createElement("div")
@@ -83,8 +91,8 @@ function todoCard(todoInfo, todo) {
   todoDueTime.textContent = todoInfo.dueTime
   const todoPriority = document.createElement("div")
   todoPriority.textContent = todoInfo.priority
-  const todoCheckbox= document.createElement("div")
-  todoCheckbox.innerHTML='<label class="checkbox-btn"><label for="checkbox"></label><input id="checkbox" type="checkbox"><span class="checkmark"></span></label>'
+  const todoCheckbox = document.createElement("div")
+  todoCheckbox.innerHTML = '<label class="checkbox-btn"><label for="checkbox"></label><input id="checkbox" type="checkbox"><span class="checkmark"></span></label>'
   todo.appendChild(todoCheckbox)
   todo.appendChild(todoTitle)
   todo.appendChild(todoDescription)
@@ -114,24 +122,24 @@ function projectInfoCard(element) {
   index.appendChild(projectInfoCard)
 
 }
-//checks if the element clicked is it's a card then do something about it
-// window.addEventListener('click', (e) => {
-// let element = e.target.getAttribute("class")
-// if (element == "card") {
-// if (e.target.classList == "card")
-// console.log(e.target.value)
-// }
-// });
+
 function appendTodo() {
   const index = document.querySelector(".index")
   const todoContainer = document.createElement("div")
   todoContainer.classList.add("cards")
   const todo = document.createElement("div")
+  todo.value = counter
+  counter++
   todo.classList.add("card")
+  todo.classList.add("todo-card")
   if (temp != "") {
     todoCard(temp, todo)
     console.log("hhhhhhhhhhhhheeeelo")
     todoContainer.appendChild(todo)
     index.appendChild(todoContainer)
   }
+}
+function editTodo() {
+
+  console.log("hello")
 }

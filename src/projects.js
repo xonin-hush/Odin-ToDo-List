@@ -1,4 +1,4 @@
-import { viewTodo } from "./ToDo"
+import { showTodo } from "./ToDo"
 //this module should be responsible for all is it about Projects
 const projectDialog = document.querySelector("#project-dialog")
 const addProject = document.querySelector("#add-project")
@@ -13,12 +13,13 @@ class ProjectInfo {
 }
 
 export function showProjects() {
+  // function showProjects() {
   const index = document.querySelector(".index")
   index.innerHTML = ""
   const myProjects = document.createElement("h1")
   myProjects.textContent = "My Projects"
   index.appendChild(myProjects)
-let counter = 0
+  let counter = 0
   projects.forEach(element => {
     console.log(element[0].title)
     const projectsContainer = document.createElement("div")
@@ -28,7 +29,7 @@ let counter = 0
     priorityColor(project, element[0].priority)
     projectCard(element[0], project)
     projectsContainer.appendChild(project)
-    project.value=counter
+    project.value = counter
     index.appendChild(projectsContainer)
     counter++
   });
