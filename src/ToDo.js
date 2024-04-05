@@ -3,10 +3,11 @@ import { divide } from "lodash"
 var temp = ""
 let counter = ""
 let element = ""
-
 //-----------------------
 const todoDialog = document.querySelector(".todo-dialog")
+const editTodoDialog=document.querySelector("#edit-todo-dialog")
 const submit = todoDialog.querySelector("#submit")
+const editSubmit=editTodoDialog.querySelector("#edit-submit")
 var currentLocation = ""
 //this module should be responsible for all is it about ToDos
 window.projects = []//done
@@ -24,20 +25,16 @@ export function showTodo() {
   counter = 1
   window.addEventListener('click', (e) => {
     let toDo = e.target.getAttribute("class")
-    console.log(e.target.getAttribute("class"))
     if (toDo == "card") {
       const index = document.querySelector(".index")
       element = e.target.value
       // console.log(projects[element][0].priority)//this is how to get projects info 
-      console.log(e.target)
       currentLocation = element
-      console.log(currentLocation)
       index.innerHTML = ""
       const todoHeader = document.createElement("div")
       const myTodos = document.createElement("h1")
       const addButton = addTodoButton()
       myTodos.textContent = "My Todos"
-      console.log("this", temp)
       todoHeader.appendChild(myTodos)
       todoHeader.appendChild(addButton)
       projectInfoCard(element)
@@ -45,8 +42,9 @@ export function showTodo() {
       // index.appendChild(projectInfoCard)
     }
     if (e.target.getAttribute("class") == "card todo-card") {
-      editTodo()
-      console.log(e.target.value)
+      editTodoDialog.showModal()
+      console.log("is this working")
+      editTodo(e.target.value)
     }
     if (e.target.getAttribute("class") == "button add-todo-button") {
       todoDialog.showModal()
@@ -66,17 +64,15 @@ function getTodoInfo() { //takes info from dialog form and sends it to projectsW
   submit.addEventListener("click", (event) => {
     event.preventDefault(); // We don't want to submit this fake form
     var todoTitle = document.querySelector("#todo-title-input")
-    var todoDescription = document.querySelector("#description-input")
-    var todoDeadLine = document.querySelector("#date-input")
-    var todoPriority = document.querySelector("#priority-input")
+    var todoDescription = document.querySelector("#todo-description-input")
+    var todoDeadLine = document.querySelector("#todo-date-input")
+    var todoPriority = document.querySelector("#todo-priority-input")
     if (todoTitle.value && todoDescription.value && todoDeadLine.value && todoPriority.value !== "") {
       temp = new ToDo(todoTitle.value, todoDescription.value, todoDeadLine.value, todoPriority.value)
       // this is setting the counter in the project array-->[projectinfo,counter]
       projects[currentLocation].push(temp)
-      console.log(projects)
       // showTodo()
       appendTodo()
-
       todoDialog.close(todoDialog.value); // Have to send the select box value here.
     }
   });
@@ -139,7 +135,29 @@ function appendTodo() {
     index.appendChild(todoContainer)
   }
 }
-function editTodo() {
+function editTodo(todoCard) {
+  editSubmit.addEventListener("click", (event) => {
+  console.log("edit todo is working")
+    event.preventDefault(); // We don't want to submit this fake form
+    var todoTitle = document.querySelector("#edit-title-input")
+    var todoDescription = document.querySelector("#edit-description-input")
+    var todoDeadLine = document.querySelector("#edit-date-input")
+    var todoPriority = document.querySelector("#edit-priority-input")
+    console.log(todoTitle.value)
+    console.log(todoDescription.value)
+    console.log(todoDeadLine.value)
+    console.log(todoPriority.value)
 
-  console.log("hello")
+    if (todoTitle.value && todoDescription.value && todoDeadLine.value && todoPriority.value !== "") {
+      temp = new ToDo(todoTitle.value, todoDescription.value, todoDeadLine.value, todoPriority.value)
+      // this is setting the counter in the project array-->[projectinfo,counter]
+      projects[element].splice(todoCard,1,temp)
+      console.log(projects)
+      console.log("thisthisthis")
+      // showTodo()
+      appendTodo()
+      editTodoDialog.close(editTodoDialog.value); // Have to send the select box value here.
+    }
+  });
 }
+console.log(document.querySelector("#todo-title-edit"))

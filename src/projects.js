@@ -56,8 +56,8 @@ function getProjectInfo() { //takes info from dialog form and sends it to projec
     const project = []
     var projectTitle = document.querySelector("#project-title-input")
     var projectDescription = document.querySelector("#project-description-input")
-    var projectDeadLine = document.querySelector("#date-input")
-    var projectPriority = document.querySelector("#priority-input")
+    var projectDeadLine = document.querySelector("#project-date-input")
+    var projectPriority = document.querySelector("#project-priority-input")
     if (projectTitle.value && projectDescription.value && projectDeadLine.value && projectPriority.value !== "") {
       var temp = new ProjectInfo(projectTitle.value, projectDescription.value, projectDeadLine.value, projectPriority.value)
       // temp = new ProjectInfo("projectTitle.value", "projectDescription.value", "projectDeadLine.value", "projectPriority.value")

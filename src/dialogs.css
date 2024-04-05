@@ -91,7 +91,7 @@ dialog::backdrop {
     outline: none;
 }
 
-#priority-input,#date-input {
+.priority-input,.date-input,#project-date-input,#todo-date-input,#edit-date-input {
     background-color: #e8e8e8;
     padding: 11px 10px;
     border: 2px #818CF8 solid;

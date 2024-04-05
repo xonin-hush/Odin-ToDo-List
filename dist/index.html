@@ -18,6 +18,7 @@
 </head>
 
 <body>
+    
     <dialog id="project-dialog">
         <div class="input-container" id="new-button">
             <div class="input-title">
@@ -34,11 +35,11 @@
             </div>
             <div class="coolinput">
                 <label for="input" class="text">DeadLine:</label>
-                <input type="date" name="input" class="input" id="date-input"  class="project-date-input" >
+                <input type="date" name="input" class="input" class="date-input"  id="project-date-input" >
             </div>
             <div class="coolinput">
                 <label for="input" class="text">Priority:</label>
-                <select name="input" id=priority-input class="project-priority-input">
+                <select name="input" class=priority-input id="project-priority-input">
                     <option value="priority1" style="color:#ff1717 ;">Priority 1</option>
                     <option value="priority2" style="color:#ffe817;">Priority 2</option>
                     <option value="priority3" style="color:#aeff17 ;">Priority 3</option>
@@ -59,15 +60,15 @@
             </div>
             <div class="coolinput">
                 <label for="input" class="text">Description:</label>
-                <input type="text" name="input"  class="input" id="description-input">
+                <input type="text" name="input"  class="input" id="todo-description-input">
             </div>
             <div class="coolinput">
                 <label for="input" class="text">DeadLine:</label>
-                <input type="date" name="input" class="input" id="date-input">
+                <input type="date" name="input" class="input" class="date-input" id="todo-date-input">
             </div>
             <div class="coolinput">
                 <label for="input" class="text">Priority:</label>
-                <select name="input" id="priority-input">
+                <select name="input" class=priority-input id="todo-priority-input">
                     <option value="priority1" style="color:#ff1717 ;">Priority 1</option>
                     <option value="priority2" style="color:#ffe817;">Priority 2</option>
                     <option value="priority3" style="color:#aeff17 ;">Priority 3</option>
@@ -75,6 +76,36 @@
                 </select>
             </div>
             <button type="submit" id="submit">Submit</button>
+    </dialog>
+
+    <dialog id="edit-todo-dialog">
+        <div class="input-container" id="new-button">
+            <div class="input-title">
+                <div id="input-create">Edit&nbsp;</div>
+                <div id="input-project">ToDo</div>
+            </div>
+            <div class="coolinput">
+                <label for="input" class="text">Title:</label>
+                <input type="text" name="input" class="input" id="edit-title-input" value="project1">
+            </div>
+            <div class="coolinput">
+                <label for="input" class="text">Description:</label>
+                <input type="text" name="input" class="input" id="edit-description-input" value="project2">
+            </div>
+            <div class="coolinput">
+                <label for="input" class="text">DeadLine:</label>
+                <input type="date" name="input" class="input" class="date-input" id="edit-date-input" >
+            </div>
+            <div class="coolinput">
+                <label for="input" class="text">Priority:</label>
+                <select name="input" class=priority-input id=edit-priority-input >
+                    <option value="priority1" style="color:#ff1717 ;">Priority 1</option>
+                    <option value="priority2" style="color:#ffe817;">Priority 2</option>
+                    <option value="priority3" style="color:#aeff17 ;">Priority 3</option>
+                    <option value="priority4" style="color:#17bdff ;">Priority 4</option>
+                </select>
+            </div>
+            <button type="submit" id="edit-submit">Submit</button>
     </dialog>
     <div class="header">
         <div class="first-row">
