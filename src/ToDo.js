@@ -20,8 +20,8 @@ class ToDo {
     this.priority = priority
   }
 }
-export function showTodo() {
-  //  function showTodo() {
+export function todoWindow() {
+  //  function todoWindow() {
   counter = 1
   window.addEventListener('click', (e) => {
     let toDo = e.target.getAttribute("class")
@@ -51,7 +51,12 @@ export function showTodo() {
     }
   });
 }
-showTodo()
+
+function renderTodos(){
+  //for each todo in project(current location)>>todocard then append
+}
+
+todoWindow()
 function addTodoButton() {
   const addTodo = document.createElement("button")
   addTodo.classList.add("button")
@@ -71,7 +76,7 @@ function getTodoInfo() { //takes info from dialog form and sends it to projectsW
       temp = new ToDo(todoTitle.value, todoDescription.value, todoDeadLine.value, todoPriority.value)
       // this is setting the counter in the project array-->[projectinfo,counter]
       projects[currentLocation].push(temp)
-      // showTodo()
+      // todoWindow()
       appendTodo()
       todoDialog.close(todoDialog.value); // Have to send the select box value here.
     }
@@ -130,7 +135,6 @@ function appendTodo() {
   todo.classList.add("todo-card")
   if (temp != "") {
     todoCard(temp, todo)
-    console.log("hhhhhhhhhhhhheeeelo")
     todoContainer.appendChild(todo)
     index.appendChild(todoContainer)
   }
@@ -153,9 +157,8 @@ function editTodo(todoCard) {
       // this is setting the counter in the project array-->[projectinfo,counter]
       projects[element].splice(todoCard,1,temp)
       console.log(projects)
-      console.log("thisthisthis")
-      // showTodo()
-      appendTodo()
+      // todoWindow()
+      // appendTodo()
       editTodoDialog.close(editTodoDialog.value); // Have to send the select box value here.
     }
   });
