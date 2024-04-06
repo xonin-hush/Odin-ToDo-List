@@ -3,12 +3,13 @@ import { showTodo } from "./ToDo"
 const projectDialog = document.querySelector("#project-dialog")
 const addProject = document.querySelector("#add-project")
 const submit = document.querySelector("#submit")
-class ProjectInfo {
-  constructor(title, description, dueTime, priority) {
+class Project {
+  constructor(title, description, dueTime, priority,type) {
     this.title = title
     this.description = description
     this.dueTime = dueTime
     this.priority = priority
+    this.type=type
   }
 }
 
@@ -58,8 +59,9 @@ function getProjectInfo() { //takes info from dialog form and sends it to projec
     var projectDescription = document.querySelector("#project-description-input")
     var projectDeadLine = document.querySelector("#project-date-input")
     var projectPriority = document.querySelector("#project-priority-input")
+    var elementType="project"
     if (projectTitle.value && projectDescription.value && projectDeadLine.value && projectPriority.value !== "") {
-      var temp = new ProjectInfo(projectTitle.value, projectDescription.value, projectDeadLine.value, projectPriority.value)
+      var temp = new Project(projectTitle.value, projectDescription.value, projectDeadLine.value, projectPriority.value,elementType)
       // temp = new ProjectInfo("projectTitle.value", "projectDescription.value", "projectDeadLine.value", "projectPriority.value")
       project.push(temp)
       // this is setting the counter in the project array-->[projectinfo,counter]
