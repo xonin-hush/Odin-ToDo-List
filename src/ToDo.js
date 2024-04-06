@@ -3,6 +3,8 @@ import { divide } from "lodash"
 var temp = ""
 let counter = ""
 let element = ""
+var currentTodoLocation = ""
+
 //-----------------------
 const todoContainer = document.createElement("div")
 todoContainer.classList.add("cards")
@@ -10,7 +12,6 @@ const todoDialog = document.querySelector(".todo-dialog")
 const editTodoDialog = document.querySelector("#edit-todo-dialog")
 const submit = todoDialog.querySelector("#submit")
 const editSubmit = editTodoDialog.querySelector("#edit-submit")
-var currentLocation = ""
 //this module should be responsible for all is it about ToDos
 window.projects = []//done
 //creates project that we're going to put todo s in it
@@ -29,7 +30,7 @@ export function todoWindow() {
       const index = document.querySelector(".index")
       element = e.target.value
       // console.log(projects[element][0].priority)//this is how to get projects info 
-      currentLocation = element
+
       index.innerHTML = ""
       const todoHeader = document.createElement("div")
       const myTodos = document.createElement("h1")
@@ -43,8 +44,19 @@ export function todoWindow() {
     }
     if (e.target.getAttribute("class") == "card todo-card") {
       editTodoDialog.showModal()
-      console.log(e.target.value)
-      editTodo(e.target.value)
+      currentTodoLocation = e.target.value
+      console.log(currentTodoLocation)
+      console.log(projects[element][currentTodoLocation].title)
+      var todoTitle = document.querySelector("#edit-title-input")
+      var todoDescription = document.querySelector("#edit-description-input")
+      var todoDeadLine = document.querySelector("#edit-date-input")
+      var todoPriority = document.querySelector("#edit-priority-input")
+      todoTitle.value = projects[element][currentTodoLocation].title
+      todoDescription.value = projects[element][currentTodoLocation].description
+      todoDeadLine.value = projects[element][currentTodoLocation].dueTime
+      todoPriority.value = projects[element][currentTodoLocation].priority
+      editTodo(currentTodoLocation)
+
     }
     if (e.target.getAttribute("class") == "button add-todo-button") {
       todoDialog.showModal()
@@ -60,7 +72,7 @@ function renderTodo() {
     todoContainer.classList.add('cards')
   }
   counter = 0
-  projects[currentLocation].forEach(todo => {
+  projects[element].forEach(todo => {
     if (!todo.type) {
       counter++
       const todoElement = document.createElement("div")
@@ -94,7 +106,7 @@ function getTodoInfo() { //takes info from dialog form and sends it to projectsW
     if (todoTitle.value && todoDescription.value && todoDeadLine.value && todoPriority.value !== "") {
       temp = new ToDo(todoTitle.value, todoDescription.value, todoDeadLine.value, todoPriority.value)
       // this is setting the counter in the project array-->[projectinfo,counter]
-      projects[currentLocation].push(temp)
+      projects[element].push(temp)
       // todoWindow()
       todoDialog.close(todoDialog.value); // Have to send the select box value here.
     }
