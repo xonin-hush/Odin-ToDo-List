@@ -18,7 +18,7 @@
 </head>
 
 <body>
-    
+
     <dialog id="project-dialog">
         <div class="input-container" id="new-button">
             <div class="input-title">
@@ -35,7 +35,7 @@
             </div>
             <div class="coolinput">
                 <label for="input" class="text">DeadLine:</label>
-                <input type="date" name="input" class="input" class="date-input"  id="project-date-input" >
+                <input type="date" name="input" class="input" class="date-input" id="project-date-input">
             </div>
             <div class="coolinput">
                 <label for="input" class="text">Priority:</label>
@@ -60,7 +60,7 @@
             </div>
             <div class="coolinput">
                 <label for="input" class="text">Description:</label>
-                <input type="text" name="input"  class="input" id="todo-description-input">
+                <input type="text" name="input" class="input" id="todo-description-input">
             </div>
             <div class="coolinput">
                 <label for="input" class="text">DeadLine:</label>
@@ -94,11 +94,11 @@
             </div>
             <div class="coolinput">
                 <label for="input" class="text">DeadLine:</label>
-                <input type="date" name="input" class="input" class="date-input" id="edit-date-input" >
+                <input type="date" name="input" class="input" class="date-input" id="edit-date-input">
             </div>
             <div class="coolinput">
                 <label for="input" class="text">Priority:</label>
-                <select name="input" class=priority-input id=edit-priority-input >
+                <select name="input" class=priority-input id=edit-priority-input>
                     <option value="priority1" style="color:#ff1717 ;">Priority 1</option>
                     <option value="priority2" style="color:#ffe817;">Priority 2</option>
                     <option value="priority3" style="color:#aeff17 ;">Priority 3</option>
@@ -126,7 +126,7 @@
                 </div>
             </div>
             <div class="buttons"><button class="button" id="add-project">New</button><button
-                    class="button">Upload</button><button class="button">Share</button></div>
+                    class="button" id="projects-button">Projects</button><button class="button">Share</button></div>
         </div>
 
     </div>
@@ -140,10 +140,10 @@
         </span>
 
         <ul>
-            <li >
+            <li>
 
-                <span onclick="showProjects()" ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" >
-                        <title>home-outline</title>
+                <span id="projects-sidebar"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <title >home-outline</title>
                         <path d="M12 5.69L17 10.19V18H15V12H9V18H7V10.19L12 5.69M12 3L2 12H5V20H11V14H13V20H19V12H22" />
                     </svg>
                     Projects
