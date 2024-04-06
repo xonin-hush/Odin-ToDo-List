@@ -23,7 +23,6 @@ class ToDo {
   }
 }
 export function todoWindow() {
-  counter = 1
   window.addEventListener('click', (e) => {
     let toDo = e.target.getAttribute("class")
     if (toDo == "card") {
@@ -44,6 +43,7 @@ export function todoWindow() {
     }
     if (e.target.getAttribute("class") == "card todo-card") {
       editTodoDialog.showModal()
+      console.log(e.target.value)
       editTodo(e.target.value)
     }
     if (e.target.getAttribute("class") == "button add-todo-button") {
@@ -54,16 +54,17 @@ export function todoWindow() {
 
 function renderTodo() {
   const index = document.querySelector(".index")
-  while (todoContainer.firstChild) { //prevent cards from duplicating
+  while (todoContainer.firstChild)//prevent cards from duplicating
+  {
     todoContainer.removeChild(todoContainer.lastChild);
     todoContainer.classList.add('cards')
   }
+  counter = 0
   projects[currentLocation].forEach(todo => {
-    console.log(todoContainer.firstChild)
     if (!todo.type) {
+      counter++
       const todoElement = document.createElement("div")
       todoElement.value = counter
-      counter++
       todoElement.classList.add("card")
       todoElement.classList.add("todo-card")
       if (todo != "") {
@@ -72,7 +73,6 @@ function renderTodo() {
         index.appendChild(todoContainer)
       }
     }
-    //for each todo in project(current location)>>todocard then append
   });
 }
 todoWindow()
@@ -105,23 +105,6 @@ function getTodoInfo() { //takes info from dialog form and sends it to projectsW
 }
 getTodoInfo()
 
-
-
-// function appendTodo() {
-//   const index = document.querySelector(".index")
-//   const todoContainer = document.createElement("div")
-//   todoContainer.classList.add("cards")
-//   const todo = document.createElement("div")
-//   todo.value = counter
-//   counter++
-//   todo.classList.add("card")
-//   todo.classList.add("todo-card")
-//   if (temp != "") {
-//     todoCard(temp, todo)
-//     todoContainer.appendChild(todo)
-//     index.appendChild(todoContainer)
-//   }
-// }
 function todoCard(todoInfo, todo) {
   const todoTitle = document.createElement("div")
   todoTitle.textContent = todoInfo.title
@@ -149,10 +132,6 @@ function editTodo(todoCard) {
     var todoDescription = document.querySelector("#edit-description-input")
     var todoDeadLine = document.querySelector("#edit-date-input")
     var todoPriority = document.querySelector("#edit-priority-input")
-    console.log(todoTitle.value)
-    console.log(todoDescription.value)
-    console.log(todoDeadLine.value)
-    console.log(todoPriority.value)
     if (todoTitle.value && todoDescription.value && todoDeadLine.value && todoPriority.value !== "") {
       temp = new ToDo(todoTitle.value, todoDescription.value, todoDeadLine.value, todoPriority.value)
       // this is setting the counter in the project array-->[projectinfo,counter]
