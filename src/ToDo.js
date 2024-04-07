@@ -30,7 +30,6 @@ export function todoWindow() {
       const index = document.querySelector(".index")
       element = e.target.value
       // console.log(projects[element][0].priority)//this is how to get projects info 
-
       index.innerHTML = ""
       const todoHeader = document.createElement("div")
       const myTodos = document.createElement("h1")
@@ -152,7 +151,7 @@ function editTodo(todoCard) {
       editTodoDialog.close(editTodoDialog.value); // Have to send the select box value here.
       renderTodo()
     }
-  });
+  },{once:true})
 }
 
 function projectInfoCard(element) {

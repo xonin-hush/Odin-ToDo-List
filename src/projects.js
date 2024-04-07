@@ -13,7 +13,7 @@ class Project {
   }
 }
 
-export function showProjects() {
+export function projectsWindow() {
   // function showProjects() {
   const index = document.querySelector(".index")
   index.innerHTML = ""
