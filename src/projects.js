@@ -35,7 +35,7 @@ export function projectsWindow() {
     counter++
   });
 }
-showProjects()
+projectsWindow()
 function projectCard(projectProperty, project) { //this function creates a card
   const projectTitle = document.createElement("div")
   projectTitle.textContent = projectProperty.title
