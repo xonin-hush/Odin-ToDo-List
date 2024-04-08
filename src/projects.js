@@ -14,7 +14,7 @@ class Project {
 }
 
 export function projectsWindow() {
-  // function showProjects() {
+  // function projectsWindow() {
   const index = document.querySelector(".index")
   index.innerHTML = ""
   const myProjects = document.createElement("h1")
@@ -66,8 +66,7 @@ function getProjectInfo() { //takes info from dialog form and sends it to projec
       project.push(temp)
       // this is setting the counter in the project array-->[projectinfo,counter]
       projects.push(project)
-      console.log(projects)
-      showProjects()
+      projectsWindow()
       projectDialog.close(projectDialog.value); // Have to send the select box value here.
     }
   });

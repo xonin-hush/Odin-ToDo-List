@@ -80,6 +80,7 @@ function renderTodo() {
       todoElement.classList.add("todo-card")
       if (todo != "") {
         todoCard(todo, todoElement)
+        priorityColor(todoElement,todo.priority)
         todoContainer.appendChild(todoElement)
         index.appendChild(todoContainer)
       }
@@ -151,7 +152,7 @@ function editTodo(todoCard) {
       editTodoDialog.close(editTodoDialog.value); // Have to send the select box value here.
       renderTodo()
     }
-  },{once:true})
+  }, { once: true })
 }
 
 function projectInfoCard(element) {
@@ -171,5 +172,20 @@ function projectInfoCard(element) {
     projectInfoCard.classList.add("project-info-card")
   }
   index.appendChild(projectInfoCard)
+
+}
+function priorityColor(todo, todoPriority) {
+  if (todoPriority == "priority1") {
+    todo.style.borderLeft = "10px solid #ff1717"
+  }
+  if (todoPriority == "priority2") {
+    todo.style.borderLeft = "10px solid #ffe817"
+  }
+  if (todoPriority == "priority3") {
+    todo.style.borderLeft = "10px solid #aeff17"
+  }
+  if (todoPriority == "priority4") {
+    todo.style.borderLeft = "10px solid #17bdff"
+  }
 
 }
