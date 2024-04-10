@@ -1,4 +1,4 @@
-import { showTodo } from "./ToDo"
+import { todoWindow } from "./ToDo"
 //this module should be responsible for all is it about Projects
 const projectDialog = document.querySelector("#project-dialog")
 const addProject = document.querySelector("#add-project")

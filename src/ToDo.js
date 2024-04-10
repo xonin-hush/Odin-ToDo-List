@@ -118,8 +118,9 @@ function getTodoInfo() { //takes info from dialog form and sends it to projectsW
 getTodoInfo()
 
 function todoCard(todoInfo, todo) {
+ const infoContainer=document.createElement("div")
   const todoTitle = document.createElement("div")
-  todoTitle.textContent = todoInfo.title
+  todoTitle.textContent = "Title:" +todoInfo.title
   const todoDescription = document.createElement("div")
   todoDescription.textContent = todoInfo.description
   const todoDueTime = document.createElement("div")
@@ -128,11 +129,15 @@ function todoCard(todoInfo, todo) {
   todoPriority.textContent = todoInfo.priority
   const todoCheckbox = document.createElement("div")
   todoCheckbox.innerHTML = '<label class="checkbox-btn"><label for="checkbox"></label><input id="checkbox" type="checkbox"><span class="checkmark"></span></label>'
-  todo.appendChild(todoCheckbox)
-  todo.appendChild(todoTitle)
-  todo.appendChild(todoDescription)
-  todo.appendChild(todoDueTime)
-  todo.appendChild(todoPriority)
+  const todoDeleteButton=document.createElement("button")
+  todoDeleteButton.classList.add("button")
+  todoDeleteButton.textContent="Remove"
+  infoContainer.appendChild(todoCheckbox)
+  infoContainer.appendChild(todoTitle)
+  infoContainer.appendChild(todoDescription)
+  infoContainer.appendChild(todoDueTime)
+  todo.appendChild(infoContainer)
+  todo.appendChild(todoDeleteButton)
 }
 
 
