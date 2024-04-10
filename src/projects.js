@@ -38,17 +38,17 @@ export function projectsWindow() {
 projectsWindow()
 function projectCard(projectProperty, project) { //this function creates a card
   const projectTitle = document.createElement("div")
-  projectTitle.textContent = projectProperty.title
+  projectTitle.textContent = "Title: "+projectProperty.title
   const projectDescription = document.createElement("div")
-  projectDescription.textContent = projectProperty.description
+  projectDescription.textContent = "Description: "+projectProperty.description
   const projectDueTime = document.createElement("div")
-  projectDueTime.textContent = projectProperty.dueTime
-  const projectPriority = document.createElement("div")
-  projectPriority.textContent = projectProperty.priority
+  projectDueTime.textContent = "DeadLine: "+projectProperty.dueTime
+  // const projectPriority = document.createElement("div")
+  // projectPriority.textContent = projectProperty.priority
   project.appendChild(projectTitle)
   project.appendChild(projectDescription)
   project.appendChild(projectDueTime)
-  project.appendChild(projectPriority)
+  // project.appendChild(projectPriority)
 }
 
 function getProjectInfo() { //takes info from dialog form and sends it to projectsWindow

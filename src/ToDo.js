@@ -80,7 +80,7 @@ function renderTodo() {
       todoElement.classList.add("todo-card")
       if (todo != "") {
         todoCard(todo, todoElement)
-        priorityColor(todoElement,todo.priority)
+        priorityColor(todoElement, todo.priority)
         todoContainer.appendChild(todoElement)
         index.appendChild(todoContainer)
       }
@@ -118,20 +118,20 @@ function getTodoInfo() { //takes info from dialog form and sends it to projectsW
 getTodoInfo()
 
 function todoCard(todoInfo, todo) {
- const infoContainer=document.createElement("div")
+  const infoContainer = document.createElement("div")
   const todoTitle = document.createElement("div")
-  todoTitle.textContent = "Title:" +todoInfo.title
+  todoTitle.textContent = "Title: " + todoInfo.title
   const todoDescription = document.createElement("div")
-  todoDescription.textContent = todoInfo.description
+  todoDescription.textContent = "Note: "+todoInfo.description
   const todoDueTime = document.createElement("div")
-  todoDueTime.textContent = todoInfo.dueTime
-  const todoPriority = document.createElement("div")
-  todoPriority.textContent = todoInfo.priority
+  todoDueTime.textContent = "DeadLine: "+todoInfo.dueTime
+  // const todoPriority = document.createElement("div")
+  // todoPriority.textContent = todoInfo.priority
   const todoCheckbox = document.createElement("div")
   todoCheckbox.innerHTML = '<label class="checkbox-btn"><label for="checkbox"></label><input id="checkbox" type="checkbox"><span class="checkmark"></span></label>'
-  const todoDeleteButton=document.createElement("button")
+  const todoDeleteButton = document.createElement("button")
   todoDeleteButton.classList.add("button")
-  todoDeleteButton.textContent="Remove"
+  todoDeleteButton.textContent = "Remove"
   infoContainer.appendChild(todoCheckbox)
   infoContainer.appendChild(todoTitle)
   infoContainer.appendChild(todoDescription)

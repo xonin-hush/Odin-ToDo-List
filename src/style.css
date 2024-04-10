@@ -137,6 +137,7 @@ svg {
 .card {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     text-align: start;
     padding: 2em;
     background-color: #ffffff;
