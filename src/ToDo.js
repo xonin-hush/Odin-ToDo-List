@@ -4,7 +4,7 @@ var temp = ""
 let counter = ""
 let element = ""
 var currentTodoLocation = ""
-
+// var deleteTodoBtn = document.querySelector("#delete-todo")
 //-----------------------
 const todoContainer = document.createElement("div")
 todoContainer.classList.add("cards")
@@ -55,7 +55,6 @@ export function todoWindow() {
       todoDeadLine.value = projects[element][currentTodoLocation].dueTime
       todoPriority.value = projects[element][currentTodoLocation].priority
       editTodo(currentTodoLocation)
-
     }
     if (e.target.getAttribute("class") == "button add-todo-button") {
       todoDialog.showModal()
@@ -120,19 +119,22 @@ getTodoInfo()
 function todoCard(todoInfo, todo) {
   const infoContainer = document.createElement("div")
   const todoTitle = document.createElement("div")
+  todoTitle.style.marginBottom = "7px"
   todoTitle.textContent = "Title: " + todoInfo.title
   const todoDescription = document.createElement("div")
-  todoDescription.textContent = "Note: "+todoInfo.description
+  todoDescription.style.marginBottom = "7px"
+  todoDescription.textContent = "Note: " + todoInfo.description
   const todoDueTime = document.createElement("div")
-  todoDueTime.textContent = "DeadLine: "+todoInfo.dueTime
-  // const todoPriority = document.createElement("div")
-  // todoPriority.textContent = todoInfo.priority
-  const todoCheckbox = document.createElement("div")
-  todoCheckbox.innerHTML = '<label class="checkbox-btn"><label for="checkbox"></label><input id="checkbox" type="checkbox"><span class="checkmark"></span></label>'
+  todoDueTime.style.marginBottom = "7px"
+  todoDueTime.textContent = "DeadLine: " + todoInfo.dueTime
+  //checkBox
+  // const todoCheckbox = document.createElement("div")
+  // todoCheckbox.innerHTML = '<label class="checkbox-btn"><label for="checkbox"></label><input id="checkbox" type="checkbox"><span class="checkmark"></span></label>'
   const todoDeleteButton = document.createElement("button")
+  todoDeleteButton.setAttribute("id", "delete-todo")
   todoDeleteButton.classList.add("button")
   todoDeleteButton.textContent = "Remove"
-  infoContainer.appendChild(todoCheckbox)
+  // infoContainer.appendChild(todoCheckbox)
   infoContainer.appendChild(todoTitle)
   infoContainer.appendChild(todoDescription)
   infoContainer.appendChild(todoDueTime)
@@ -192,5 +194,21 @@ function priorityColor(todo, todoPriority) {
   if (todoPriority == "priority4") {
     todo.style.borderLeft = "10px solid #17bdff"
   }
-
 }
+function deleteTodo() {
+  window.addEventListener('click', (e) => {
+    var current = e.target
+    console.log(projects)
+    current = current.getAttribute("id")
+    if (current == "delete-todo") {
+      console.log("working g")
+      console.log("bro", projects)
+      console.log(currentTodoLocation)
+      if (currentTodoLocation != "") {
+        projects[element].splice(currentTodoLocation, 1)
+      }
+      renderTodo()
+    }
+  });
+}
+deleteTodo()
