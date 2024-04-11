@@ -44,8 +44,6 @@ export function todoWindow() {
     if (e.target.getAttribute("class") == "card todo-card") {
       editTodoDialog.showModal()
       currentTodoLocation = e.target.value
-      console.log(currentTodoLocation)
-      console.log(projects[element][currentTodoLocation].title)
       var todoTitle = document.querySelector("#edit-title-input")
       var todoDescription = document.querySelector("#edit-description-input")
       var todoDeadLine = document.querySelector("#edit-date-input")
@@ -155,7 +153,6 @@ function editTodo(todoCard) {
       temp = new ToDo(todoTitle.value, todoDescription.value, todoDeadLine.value, todoPriority.value)
       // this is setting the counter in the project array-->[projectinfo,counter]
       projects[element].splice(todoCard, 1, temp)
-      console.log(projects)
       editTodoDialog.close(editTodoDialog.value); // Have to send the select box value here.
       renderTodo()
     }
@@ -198,12 +195,8 @@ function priorityColor(todo, todoPriority) {
 function deleteTodo() {
   window.addEventListener('click', (e) => {
     var current = e.target
-    console.log(projects)
     current = current.getAttribute("id")
     if (current == "delete-todo") {
-      console.log("working g")
-      console.log("bro", projects)
-      console.log(currentTodoLocation)
       if (currentTodoLocation != "") {
         projects[element].splice(currentTodoLocation, 1)
       }

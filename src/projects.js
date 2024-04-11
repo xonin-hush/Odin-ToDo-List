@@ -22,7 +22,6 @@ export function projectsWindow() {
   index.appendChild(myProjects)
   let counter = 0
   projects.forEach(element => {
-    console.log(element[0].title)
     const projectsContainer = document.createElement("div")
     const project = document.createElement("div")
     project.classList.add("card")

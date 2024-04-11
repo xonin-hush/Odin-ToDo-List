@@ -7,7 +7,6 @@ projectsButton.addEventListener('click', () => {
     projectsWindow()
 });
 projectsSideBar.addEventListener('click', () => {
-    console.log(projectsSideBar)
     projectsWindow()
 });
 
