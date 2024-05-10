@@ -1,4 +1,5 @@
 import { divide } from "lodash"
+// import { projectsWindow } from "./projects"
 //todo global variables
 var temp = ""
 let counter = ""
@@ -194,6 +195,10 @@ function priorityColor(todo, todoPriority) {
 }
 function deleteTodo() {
   window.addEventListener('click', (e) => {
+    var jsonProjects = JSON.stringify(projects)
+    localStorage.setItem("jsonProjects", jsonProjects)
+    console.log(localStorage.getItem("jsonProjects"))
+
     var current = e.target
     current = current.getAttribute("id")
     if (current == "delete-todo") {
@@ -205,3 +210,24 @@ function deleteTodo() {
   });
 }
 deleteTodo()
+localStorage.getItem("jsonProjects")
+projects = []
+var something=localStorage.getItem("jsonProjects")
+projects = []
+console.log(projects)
+// function handleLocalStorage() {
+//   if ((localStorage.getItem("jsonProjects")) == null) {
+//     console.log("hi")
+//   }
+//   if (projects != []) {
+//     projects = localStorage.getItem("jsonProjects")
+//     // console.log(projects)
+//     // projectsWindow()
+//   }
+//   // var jsonProjects = JSON.stringify(projects)
+//   // localStorage.setItem("jsonProjects", jsonProjects)
+//   // console.log(localStorage.getItem("jsonProjects"))
+//   // console.log(JSON.parse(localStorage.getItem("jsonProjects")))
+
+// }
+// handleLocalStorage()

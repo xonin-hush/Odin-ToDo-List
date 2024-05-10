@@ -1,4 +1,5 @@
 import { todoWindow } from "./ToDo"
+
 //this module should be responsible for all is it about Projects
 const projectDialog = document.querySelector("#project-dialog")
 const addProject = document.querySelector("#add-project")
@@ -12,7 +13,7 @@ class Project {
     this.type = type
   }
 }
-
+console.log(window.projects)
 export function projectsWindow() {
   // function projectsWindow() {
   const index = document.querySelector(".index")
@@ -91,6 +92,7 @@ function priorityColor(project, projectPriority) {
 }
 
 // function doStuff() {
-// console.log(projects);
+//   console.log(JSON.parse(localStorage.getItem("jsonProjects")))
+// console.log(localStorage.getItem("jsonProjects"))
 //  }
 //  setInterval(doStuff, 5000);
