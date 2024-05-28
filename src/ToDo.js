@@ -131,9 +131,6 @@ function todoCard(todoInfo, todo, i) {
   const todoDueTime = document.createElement("div")
   todoDueTime.style.marginBottom = "7px"
   todoDueTime.textContent = "DeadLine: " + todoInfo.dueTime
-  //checkBox, but it's canceled tho
-  // const todoCheckbox = document.createElement("div")
-  // todoCheckbox.innerHTML = '<label class="checkbox-btn"><label for="checkbox"></label><input id="checkbox" type="checkbox"><span class="checkmark"></span></label>'
   const todoDeleteButton = document.createElement("button")
   todoDeleteButton.setAttribute("id", "delete-todo")
   todoDeleteButton.classList.add("button")
