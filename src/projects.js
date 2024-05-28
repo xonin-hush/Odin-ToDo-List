@@ -13,6 +13,7 @@ class Project {
     this.type = type
   }
 }
+
 console.log(window.projects)
 export function projectsWindow() {
   // function projectsWindow() {
@@ -38,11 +39,11 @@ export function projectsWindow() {
 projectsWindow()
 function projectCard(projectProperty, project) { //this function creates a card
   const projectTitle = document.createElement("div")
-  projectTitle.textContent = "Title: "+projectProperty.title
+  projectTitle.textContent = "Title: " + projectProperty.title
   const projectDescription = document.createElement("div")
-  projectDescription.textContent = "Description: "+projectProperty.description
+  projectDescription.textContent = "Description: " + projectProperty.description
   const projectDueTime = document.createElement("div")
-  projectDueTime.textContent = "DeadLine: "+projectProperty.dueTime
+  projectDueTime.textContent = "DeadLine: " + projectProperty.dueTime
   // const projectPriority = document.createElement("div")
   // projectPriority.textContent = projectProperty.priority
   project.appendChild(projectTitle)
@@ -67,6 +68,7 @@ function getProjectInfo() { //takes info from dialog form and sends it to projec
       // this is setting the counter in the project array-->[projectinfo,counter]
       projects.push(project)
       projectsWindow()
+      localStorage.setItem('jsonProjects', JSON.stringify(projects))
       projectDialog.close(projectDialog.value); // Have to send the select box value here.
     }
   });

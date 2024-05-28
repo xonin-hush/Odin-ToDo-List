@@ -14,7 +14,7 @@ const editTodoDialog = document.querySelector("#edit-todo-dialog")
 const submit = todoDialog.querySelector("#submit")
 const editSubmit = editTodoDialog.querySelector("#edit-submit")
 //this module should be responsible for all is it about ToDos
-window.projects = []//done
+window.projects = getProjectsFromLocalStorage()//done
 //creates project that we're going to put todo s in it
 class ToDo {
   constructor(title, description, dueTime, priority) {
@@ -69,7 +69,7 @@ function renderTodo() {
     todoContainer.classList.add('cards')
   }
   counter = 0
-  projects[element].forEach(todo => {
+  projects[element].forEach((todo, i) => {
     if (!todo.type) {
       counter++
       const todoElement = document.createElement("div")
@@ -77,7 +77,7 @@ function renderTodo() {
       todoElement.classList.add("card")
       todoElement.classList.add("todo-card")
       if (todo != "") {
-        todoCard(todo, todoElement)
+        todoCard(todo, todoElement, i)
         priorityColor(todoElement, todo.priority)
         todoContainer.appendChild(todoElement)
         index.appendChild(todoContainer)
@@ -105,6 +105,7 @@ function getTodoInfo() { //takes info from dialog form and sends it to projectsW
       temp = new ToDo(todoTitle.value, todoDescription.value, todoDeadLine.value, todoPriority.value)
       // this is setting the counter in the project array-->[projectinfo,counter]
       projects[element].push(temp)
+      handleLocalStorage()
       // todoWindow()
       todoDialog.close(todoDialog.value); // Have to send the select box value here.
     }
@@ -115,7 +116,7 @@ function getTodoInfo() { //takes info from dialog form and sends it to projectsW
 }
 getTodoInfo()
 
-function todoCard(todoInfo, todo) {
+function todoCard(todoInfo, todo, i) {
   const infoContainer = document.createElement("div")
   const todoTitle = document.createElement("div")
   todoTitle.style.marginBottom = "7px"
@@ -133,6 +134,9 @@ function todoCard(todoInfo, todo) {
   todoDeleteButton.setAttribute("id", "delete-todo")
   todoDeleteButton.classList.add("button")
   todoDeleteButton.textContent = "Remove"
+  todoDeleteButton.addEventListener('click', () => {
+    deleteTodo(i);
+  })
   // infoContainer.appendChild(todoCheckbox)
   infoContainer.appendChild(todoTitle)
   infoContainer.appendChild(todoDescription)
@@ -154,6 +158,7 @@ function editTodo(todoCard) {
       temp = new ToDo(todoTitle.value, todoDescription.value, todoDeadLine.value, todoPriority.value)
       // this is setting the counter in the project array-->[projectinfo,counter]
       projects[element].splice(todoCard, 1, temp)
+      handleLocalStorage()
       editTodoDialog.close(editTodoDialog.value); // Have to send the select box value here.
       renderTodo()
     }
@@ -193,41 +198,18 @@ function priorityColor(todo, todoPriority) {
     todo.style.borderLeft = "10px solid #17bdff"
   }
 }
-function deleteTodo() {
-  window.addEventListener('click', (e) => {
-    var jsonProjects = JSON.stringify(projects)
-    localStorage.setItem("jsonProjects", jsonProjects)
-    console.log(localStorage.getItem("jsonProjects"))
-
-    var current = e.target
-    current = current.getAttribute("id")
-    if (current == "delete-todo") {
-      if (currentTodoLocation != "") {
-        projects[element].splice(currentTodoLocation, 1)
-      }
-      renderTodo()
-    }
-  });
+function deleteTodo(index) {
+  projects[element].splice(index, 1);
+  handleLocalStorage();
+  renderTodo();
 }
-deleteTodo()
-localStorage.getItem("jsonProjects")
-projects = []
-var something=localStorage.getItem("jsonProjects")
-projects = []
-console.log(projects)
-// function handleLocalStorage() {
-//   if ((localStorage.getItem("jsonProjects")) == null) {
-//     console.log("hi")
-//   }
-//   if (projects != []) {
-//     projects = localStorage.getItem("jsonProjects")
-//     // console.log(projects)
-//     // projectsWindow()
-//   }
-//   // var jsonProjects = JSON.stringify(projects)
-//   // localStorage.setItem("jsonProjects", jsonProjects)
-//   // console.log(localStorage.getItem("jsonProjects"))
-//   // console.log(JSON.parse(localStorage.getItem("jsonProjects")))
 
-// }
-// handleLocalStorage()
+function handleLocalStorage() {
+  const stringifyProjects = JSON.stringify(projects)
+  localStorage.setItem('jsonProjects', stringifyProjects);
+}
+
+function getProjectsFromLocalStorage() {
+  const projectsData = localStorage.getItem('jsonProjects');
+  return projectsData ? JSON.parse(projectsData) : [];
+}
