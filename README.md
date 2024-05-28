@@ -1,8 +1,8 @@
-# [Odin-ToDo-List](https://restaurant.xonin.dev)
+# [Odin-ToDo-List](https://todo.xonin.dev)
 Fourth project in "the odin project" JavaScript Course, it demonstrates JSON, OOP Principles as of other stuff.  [The Odin Project-JavaScript](https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript).
 
 ## Links
-[Visit website](https://restaurant.xonin.dev)
+[Visit website](https://todo.xonin.dev)
 
 ## Technologies used
 ![HTML5](https://img.shields.io/badge/html5-E34F26.svg?style=for-the-badge&logo=html5&logoColor=FFF)
@@ -22,5 +22,52 @@ Fourth project in "the odin project" JavaScript Course, it demonstrates JSON, OO
 - JSON format 
 - Some OOP Principles
 - Puttin { once: true } at the end of eventListeners so you don't keep adding eventListeners on top of each other (would cause unwanted behavior)
+- Deploying projects that use webpack using netlify (which you can find below)
+## How to I managed to deploy this project
+
+### Step 1
+
+add dist & src files and commit them to github
+
+```sh
+git add dist
+git add src
+git commit -m "Initial dist & src subtree commit"
+```
+### Step 2
+
+create gh-pages then push dist to it
+
+```sh
+git subtree push --prefix dist origin gh-pages
+```
+
+### Step 3
+
+checkout to new branch then share src file with it
+
+```sh
+git checkout gh-pages
+git checkout main src/
+```
+
+### Step 4
+
+add and commit your changes
+
+```sh
+git add src
+git commit -m "Add src to branch"
+git push
+git checkout main
+```
+### Step 5
+
+then just go to netlify and deploy your project using on the new branch
+
+#### Srouces
+
+- https://gist.github.com/cobyism/4730490
+- https://www.30secondsofcode.org/git/s/copy-file-from-branch
 ## Credits
 This project was made by [Xonin](https://github.com/xonin-hush) for The Odin Project.
