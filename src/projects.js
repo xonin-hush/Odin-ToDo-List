@@ -1,9 +1,9 @@
 import { todoWindow } from "./ToDo"
-
 //this module should be responsible for all is it about Projects
 const projectDialog = document.querySelector("#project-dialog")
 const addProject = document.querySelector("#add-project")
 const submit = document.querySelector("#submit")
+
 class Project {
   constructor(title, description, dueTime, priority, type) {
     this.title = title
@@ -14,9 +14,7 @@ class Project {
   }
 }
 
-console.log(window.projects)
 export function projectsWindow() {
-  // function projectsWindow() {
   const index = document.querySelector(".index")
   index.innerHTML = ""
   const myProjects = document.createElement("h1")
@@ -37,6 +35,8 @@ export function projectsWindow() {
   });
 }
 projectsWindow()
+
+
 function projectCard(projectProperty, project) { //this function creates a card
   const projectTitle = document.createElement("div")
   projectTitle.textContent = "Title: " + projectProperty.title
@@ -44,12 +44,9 @@ function projectCard(projectProperty, project) { //this function creates a card
   projectDescription.textContent = "Description: " + projectProperty.description
   const projectDueTime = document.createElement("div")
   projectDueTime.textContent = "DeadLine: " + projectProperty.dueTime
-  // const projectPriority = document.createElement("div")
-  // projectPriority.textContent = projectProperty.priority
   project.appendChild(projectTitle)
   project.appendChild(projectDescription)
   project.appendChild(projectDueTime)
-  // project.appendChild(projectPriority)
 }
 
 function getProjectInfo() { //takes info from dialog form and sends it to projectsWindow
@@ -63,7 +60,6 @@ function getProjectInfo() { //takes info from dialog form and sends it to projec
     var elementType = "project"
     if (projectTitle.value && projectDescription.value && projectDeadLine.value && projectPriority.value !== "") {
       var temp = new Project(projectTitle.value, projectDescription.value, projectDeadLine.value, projectPriority.value, elementType)
-      // temp = new ProjectInfo("projectTitle.value", "projectDescription.value", "projectDeadLine.value", "projectPriority.value")
       project.push(temp)
       // this is setting the counter in the project array-->[projectinfo,counter]
       projects.push(project)
@@ -73,10 +69,14 @@ function getProjectInfo() { //takes info from dialog form and sends it to projec
     }
   });
 }
+
+
 addProject.addEventListener("click", () => {
   projectDialog.showModal()
 });
 getProjectInfo()
+
+
 function priorityColor(project, projectPriority) {
   if (projectPriority == "priority1") {
     project.style.borderLeft = "10px solid #ff1717"
@@ -90,11 +90,4 @@ function priorityColor(project, projectPriority) {
   if (projectPriority == "priority4") {
     project.style.borderLeft = "10px solid #17bdff"
   }
-
 }
-
-// function doStuff() {
-//   console.log(JSON.parse(localStorage.getItem("jsonProjects")))
-// console.log(localStorage.getItem("jsonProjects"))
-//  }
-//  setInterval(doStuff, 5000);

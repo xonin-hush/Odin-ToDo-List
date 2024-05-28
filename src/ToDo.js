@@ -1,21 +1,19 @@
 import { divide } from "lodash"
-// import { projectsWindow } from "./projects"
 //todo global variables
 var temp = ""
 let counter = ""
 let element = ""
 var currentTodoLocation = ""
-// var deleteTodoBtn = document.querySelector("#delete-todo")
-//-----------------------
 const todoContainer = document.createElement("div")
 todoContainer.classList.add("cards")
 const todoDialog = document.querySelector(".todo-dialog")
 const editTodoDialog = document.querySelector("#edit-todo-dialog")
 const submit = todoDialog.querySelector("#submit")
 const editSubmit = editTodoDialog.querySelector("#edit-submit")
-//this module should be responsible for all is it about ToDos
 window.projects = getProjectsFromLocalStorage()//done
-//creates project that we're going to put todo s in it
+//creates project variable that we're going to put todo s in it
+
+
 class ToDo {
   constructor(title, description, dueTime, priority) {
     this.title = title
@@ -24,13 +22,15 @@ class ToDo {
     this.priority = priority
   }
 }
+
+
 export function todoWindow() {
   window.addEventListener('click', (e) => {
+
     let toDo = e.target.getAttribute("class")
     if (toDo == "card") {
       const index = document.querySelector(".index")
       element = e.target.value
-      // console.log(projects[element][0].priority)//this is how to get projects info 
       index.innerHTML = ""
       const todoHeader = document.createElement("div")
       const myTodos = document.createElement("h1")
@@ -42,6 +42,7 @@ export function todoWindow() {
       index.appendChild(todoHeader)
       renderTodo()
     }
+
     if (e.target.getAttribute("class") == "card todo-card") {
       editTodoDialog.showModal()
       currentTodoLocation = e.target.value
@@ -55,9 +56,11 @@ export function todoWindow() {
       todoPriority.value = projects[element][currentTodoLocation].priority
       editTodo(currentTodoLocation)
     }
+
     if (e.target.getAttribute("class") == "button add-todo-button") {
       todoDialog.showModal()
     }
+
   });
 }
 
@@ -85,6 +88,8 @@ function renderTodo() {
     }
   });
 }
+
+
 todoWindow()
 function addTodoButton() {
   const addTodo = document.createElement("button")
@@ -92,8 +97,9 @@ function addTodoButton() {
   addTodo.classList.add("add-todo-button")
   addTodo.textContent = "Add Todo"
   return addTodo
-
 }
+
+
 function getTodoInfo() { //takes info from dialog form and sends it to projectsWindow
   submit.addEventListener("click", (event) => {
     event.preventDefault(); // We don't want to submit this fake form
@@ -106,15 +112,13 @@ function getTodoInfo() { //takes info from dialog form and sends it to projectsW
       // this is setting the counter in the project array-->[projectinfo,counter]
       projects[element].push(temp)
       handleLocalStorage()
-      // todoWindow()
       todoDialog.close(todoDialog.value); // Have to send the select box value here.
     }
     renderTodo()
-
   });
-
 }
 getTodoInfo()
+
 
 function todoCard(todoInfo, todo, i) {
   const infoContainer = document.createElement("div")
@@ -127,7 +131,7 @@ function todoCard(todoInfo, todo, i) {
   const todoDueTime = document.createElement("div")
   todoDueTime.style.marginBottom = "7px"
   todoDueTime.textContent = "DeadLine: " + todoInfo.dueTime
-  //checkBox
+  //checkBox, but it's canceled tho
   // const todoCheckbox = document.createElement("div")
   // todoCheckbox.innerHTML = '<label class="checkbox-btn"><label for="checkbox"></label><input id="checkbox" type="checkbox"><span class="checkmark"></span></label>'
   const todoDeleteButton = document.createElement("button")
@@ -137,14 +141,12 @@ function todoCard(todoInfo, todo, i) {
   todoDeleteButton.addEventListener('click', () => {
     deleteTodo(i);
   })
-  // infoContainer.appendChild(todoCheckbox)
   infoContainer.appendChild(todoTitle)
   infoContainer.appendChild(todoDescription)
   infoContainer.appendChild(todoDueTime)
   todo.appendChild(infoContainer)
   todo.appendChild(todoDeleteButton)
 }
-
 
 
 function editTodo(todoCard) {
@@ -165,6 +167,7 @@ function editTodo(todoCard) {
   }, { once: true })
 }
 
+
 function projectInfoCard(element) {
   const index = document.querySelector(".index")
   const projectInfoCard = document.createElement("div")
@@ -184,6 +187,8 @@ function projectInfoCard(element) {
   index.appendChild(projectInfoCard)
 
 }
+
+
 function priorityColor(todo, todoPriority) {
   if (todoPriority == "priority1") {
     todo.style.borderLeft = "10px solid #ff1717"
@@ -198,16 +203,20 @@ function priorityColor(todo, todoPriority) {
     todo.style.borderLeft = "10px solid #17bdff"
   }
 }
+
+
 function deleteTodo(index) {
   projects[element].splice(index, 1);
   handleLocalStorage();
   renderTodo();
 }
 
+
 function handleLocalStorage() {
   const stringifyProjects = JSON.stringify(projects)
   localStorage.setItem('jsonProjects', stringifyProjects);
 }
+
 
 function getProjectsFromLocalStorage() {
   const projectsData = localStorage.getItem('jsonProjects');

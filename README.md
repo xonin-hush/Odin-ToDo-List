@@ -21,5 +21,6 @@ Fourth project in "the odin project" JavaScript Course, it demonstrates JSON, OO
 - Handling local storage
 - JSON format 
 - Some OOP Principles
+- Puttin { once: true } at the end of eventListeners so you don't keep adding eventListeners on top of each other (would cause unwanted behavior)
 ## Credits
 This project was made by [Xonin](https://github.com/xonin-hush) for The Odin Project.
