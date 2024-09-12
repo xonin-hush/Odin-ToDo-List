@@ -1,0 +1,104 @@
+/* here starts the input card */
+dialog[open] {
+    position:fixed;
+    top: 40%;
+    left: 50%;
+    background-color: #e8e8e8;
+    height: 20rem;
+    margin: 0%;
+
+    border-radius: 10px;
+    border-color:#e8e8e8 ;
+}
+dialog button{
+    color: white;
+    font-weight: bold;
+    background-color: #3a73ed;
+    padding: 11px 10px;
+    border: 2px #3a73ed solid;
+    border-radius: 5px;
+    margin-top: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+
+}
+dialog button:hover{
+    background-color: #818CF8;
+    border-color: #818CF8;
+}
+dialog::backdrop {
+    backdrop-filter: blur(2px);
+}
+.input-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#input-project {
+    color: #3a73ed;
+    font-family: "Anta", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 30px;
+}
+
+#input-create {
+    color: #0e3d4b;
+    font-family: "Anta", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 30px;
+
+}
+
+#input-description {
+    color: #0e3d4b;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+/*input-box*/
+.coolinput {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    position: static;
+    max-width: 240px;
+}
+
+.coolinput label.text {
+    font-size: 0.75rem;
+    color: #818CF8;
+    font-weight: 700;
+    position: relative;
+    top: 0.5rem;
+    margin: 0 0 0 7px;
+    padding: 0 3px;
+    background: #e8e8e8;
+    width: fit-content;
+}
+
+.coolinput input[type=text].input {
+    padding: 11px 10px;
+    font-size: 0.75rem;
+    border: 2px #818CF8 solid;
+    border-radius: 5px;
+    background: #e8e8e8;
+}
+
+.coolinput input[type=text].input:focus {
+    outline: none;
+}
+
+.priority-input,.date-input,#project-date-input,#todo-date-input,#edit-date-input {
+    background-color: #e8e8e8;
+    padding: 11px 10px;
+    border: 2px #818CF8 solid;
+    border-radius: 5px;
+    color: #0e3d4b;
+}
+/* here ends the input card */
+option{
+    background-color: #0e3d4b;
+}
