@@ -265,3 +265,11 @@ span svg {
     font-weight: bold;
     justify-content: space-between;
 }
+
+button{
+    cursor: pointer;
+}
+.card:not(.card.project-info-card){
+    cursor: pointer;
+}
+#projects-sidebar{cursor: pointer;}
